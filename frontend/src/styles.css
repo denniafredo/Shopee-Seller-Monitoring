@@ -36,7 +36,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 36px;
+  margin-bottom: 5px;
 }
 
 .page-header h1 {
@@ -86,20 +86,19 @@ body {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
-  margin-bottom: 36px;
+  margin-bottom: 26px;
 }
 
 .summary-card {
   position: relative;
   display: flex;
-  min-height: 168px;
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
   border: 1.5px solid var(--line);
   border-radius: 14px;
   background: var(--card);
-  padding: 26px 26px;
+  padding: 5px 26px;
   color: var(--brown);
 }
 
@@ -115,15 +114,15 @@ body {
 }
 
 .summary-card__label {
-  margin: 0 0 22px;
-  font-size: 18px;
+  font-size: 20px;
   text-transform: uppercase;
+  margin: 0 0 1px;
 }
 
 .summary-card h2 {
   margin: 0;
   color: #08162d;
-  font-size: 36px;
+  font-size: 56px;
   line-height: 1;
 }
 
@@ -222,7 +221,7 @@ body {
 }
 
 .order-panel__header {
-  padding: 22px 28px;
+  padding: 5px 28px;
   border-bottom: 1.5px solid var(--line);
 }
 
@@ -289,6 +288,7 @@ body {
 }
 
 .order-cell--items {
+  grid-column: 2 / 4;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -296,7 +296,7 @@ body {
 
 .item-row {
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 48px minmax(0, 1fr) 70px;
   gap: 16px;
   align-items: center;
   min-height: 64px;
@@ -331,7 +331,31 @@ body {
   font-weight: 500;
 }
 
-.item-row__variant,
+.item-row__details {
+  min-width: 0;
+}
+
+.item-row__qty {
+  justify-self: center;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.item-row__variant {
+  margin: 0 0 6px;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #fff3e8;
+  border: 1px solid #f5c0a8;
+  color: #b24f24;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 .item-row__sku {
   margin: 0;
   color: #8d817d;
@@ -339,16 +363,11 @@ body {
 }
 
 .order-cell--qty {
-  display: flex;
-  flex-direction: column;
-  gap: 46px;
-  align-items: center;
-  color: #111827;
-  font-size: 18px;
-  padding-top: 8px;
+  display: none;
 }
 
 .order-cell--status {
+  grid-column: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -384,7 +403,7 @@ body {
 
 .deadline-text {
   color: var(--red);
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 900;
   line-height: 1.1;
   text-align: center;
@@ -434,7 +453,7 @@ body {
 
   .page-header {
     flex-direction: column;
-    margin-bottom: 24px;
+    margin-bottom: 14px;
   }
 
   .summary-grid,
@@ -449,6 +468,11 @@ body {
   .order-row {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .order-cell--items,
+  .order-cell--status {
+    grid-column: auto;
   }
 
   .order-cell--qty,

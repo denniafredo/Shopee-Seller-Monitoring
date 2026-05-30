@@ -39,23 +39,33 @@ function OrderRow({ order, tone }) {
       </div>
 
       <div className="order-cell order-cell--items">
-        {items.map((item, index) => (
-          <div className="item-row" key={`${order.orderNo}-${item.itemId || item.modelId || index}`}>
-            <ProductImage src={getDisplayImage(item)} alt={item.productName} />
-            <div>
-              <p className="item-row__name">{item.productName}</p>
-              <p className="item-row__variant">{formatVariantText(item)}</p>
-              {(item.modelSku || item.sku) && <p className="item-row__sku">SKU: {item.modelSku || item.sku}</p>}
+        {items.map((item, index) => {
+          const maxNameLength = 40
+          const needsMarquee = item.productName && item.productName.length > maxNameLength
+          const displayName = item.productName
+            ? item.productName.length > maxNameLength
+              ? item.productName.slice(0, maxNameLength) + '....'
+              : item.productName
+            : ''
+
+          return (
+            <div className="item-row" key={`${order.orderNo}-${item.itemId || item.modelId || index}`}>
+              <ProductImage src={getDisplayImage(item)} alt={item.productName} />
+              <div className="item-row__details">
+                <p className={`item-row__name ${needsMarquee ? 'is-truncated' : ''}`} title={item.productName}>
+                  {displayName}
+                </p>
+
+                <p className="item-row__variant">{formatVariantText(item)}</p>
+                {(item.modelSku || item.sku) && <p className="item-row__sku">SKU: {item.modelSku || item.sku}</p>}
+              </div>
+              <span className="item-row__qty">{item.qty}</span>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
-      <div className="order-cell order-cell--qty">
-        {items.map((item, index) => (
-          <span key={`${order.orderNo}-qty-${index}`}>{item.qty}</span>
-        ))}
-      </div>
+      <div className="order-cell order-cell--qty" aria-hidden="true" />
 
       <div className="order-cell order-cell--status">
         <StatusBadge status={order.status} />

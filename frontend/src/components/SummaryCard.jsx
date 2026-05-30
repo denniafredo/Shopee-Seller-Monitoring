@@ -16,7 +16,6 @@ export default function SummaryCard({ type, label, pendingCount = 0 }) {
       <div>
         <p className="summary-card__label">{label || type}</p>
         <h2>{pendingCount}</h2>
-        <p className="summary-card__caption">Orders Pending</p>
       </div>
       <div className="summary-card__icon">
         <Icon size={24} strokeWidth={2.2} />

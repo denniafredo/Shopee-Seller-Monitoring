@@ -153,7 +153,7 @@ export default function App() {
 
   return (
     <main className="dashboard">
-      <header className="page-header">
+      {/* <header className="page-header">
         <div>
           <h1>Monitoring Pesanan Shopee</h1>
           <p><CalendarDays size={18} /> {todayLabel}</p>
@@ -163,7 +163,7 @@ export default function App() {
           <RefreshCw size={18} className={syncing ? 'spin' : ''} />
           {syncing ? 'Syncing...' : 'Sync Shopee'}
         </button>
-      </header>
+      </header> */}
 
       {error && <div className="alert-error">{error}</div>}
 
