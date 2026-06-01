@@ -21,7 +21,7 @@ router.get('/today-range', todayRange);
 
 router.get('/orders/dashboard-summary', dashboardSummary);
 router.get('/orders/pending', pendingOrders);
-router.get('/orders/pending-grouped', pendingOrdersGrouped);
+router.get('/orders/pending/grouped', pendingOrdersGrouped);
 router.get('/orders/:orderNo', orderDetail);
 router.patch('/orders/:orderNo/status', changeOrderStatus);
 router.post('/sync-orders', syncOrders);
