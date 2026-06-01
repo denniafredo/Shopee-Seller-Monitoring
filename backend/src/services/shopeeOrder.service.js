@@ -47,7 +47,7 @@ export async function getPendingOrders(params = {}) {
 
   let orders = await getShopeeOrdersWithDetails(params);
 
-  orders = orders.filter((order) => PENDING_STATUSES.includes(order.status));
+  orders = orders.filter((order) => PENDING_STATUSES.includes(order.status) && order.paymentStatus === 'PAID');
 
   if (shippingType) {
     orders = orders.filter((order) => order.shippingType === shippingType);
@@ -127,10 +127,12 @@ export async function refreshShopeeTokenFromEnv() {
 
 async function getShopeeOrdersWithDetails(params = {}) {
   const { shopId, accessToken } = getShopeeCredential();
-  const { timeFrom: todayFrom, timeTo: todayTo } = getTodayUnixRangeWIB();
+  const now = Math.floor(Date.now() / 1000);
 
-  const timeFrom = Number(params.timeFrom || params.time_from || todayFrom);
-  const timeTo = Number(params.timeTo || params.time_to || todayTo);
+  const rawTimeFrom = params.timeFrom ?? params.time_from;
+  const rawTimeTo = params.timeTo ?? params.time_to;
+  const timeFrom = rawTimeFrom !== undefined ? Number(rawTimeFrom) : 0;
+  const timeTo = rawTimeTo !== undefined ? Number(rawTimeTo) : now;
   const pageSize = Number(params.pageSize || params.page_size || 50);
   const timeRangeField = params.timeRangeField || params.time_range_field || 'create_time';
 
