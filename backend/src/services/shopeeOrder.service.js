@@ -4,7 +4,9 @@ import { formatTimeWIB, getTodayUnixRangeWIB } from '../utils/date.util.js';
 
 export async function getDashboardSummary(params = {}) {
   const orders = await getShopeeOrdersWithDetails(params);
-  const pendingOrders = orders.filter((order) => PENDING_STATUSES.includes(order.status));
+  const pendingOrders = orders.filter(
+    (order) => PENDING_STATUSES.includes(order.status) && order.paymentStatus === 'PAID'
+  );
 
   const countMap = pendingOrders.reduce((acc, order) => {
     acc[order.shippingType] = (acc[order.shippingType] || 0) + 1;
@@ -47,7 +49,9 @@ export async function getPendingOrders(params = {}) {
 
   let orders = await getShopeeOrdersWithDetails(params);
 
-  orders = orders.filter((order) => PENDING_STATUSES.includes(order.status));
+  orders = orders.filter(
+    (order) => PENDING_STATUSES.includes(order.status) && order.paymentStatus === 'PAID'
+  );
 
   if (shippingType) {
     orders = orders.filter((order) => order.shippingType === shippingType);
