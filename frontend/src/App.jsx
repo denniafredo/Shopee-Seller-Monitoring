@@ -184,6 +184,16 @@ export default function App() {
           {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
           {soundEnabled ? 'Suara aktif' : 'Aktifkan suara'}
         </button>
+        {soundEnabled && (
+          <button
+            className="test-play-button"
+            type="button"
+            onClick={playOrderNotificationSound}
+            title="Coba putar suara notifikasi"
+          >
+            🔊 Test Play
+          </button>
+        )}
         {lastUpdated && <span className="last-updated">Update: {lastUpdated}</span>}
       </div>
 

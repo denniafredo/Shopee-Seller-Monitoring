@@ -199,6 +199,32 @@ body {
   color: var(--red);
 }
 
+.test-play-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  border: 1px solid #d1a600;
+  border-radius: 999px;
+  background: #fff9e6;
+  color: #b8860b;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.test-play-button:hover {
+  border-color: #f5a400;
+  background: #fff8c4;
+  box-shadow: 0 2px 8px rgba(245, 164, 0, 0.2);
+}
+
+.test-play-button:active {
+  transform: scale(0.98);
+}
+
 .last-updated {
   margin-left: auto;
   color: var(--brown);
