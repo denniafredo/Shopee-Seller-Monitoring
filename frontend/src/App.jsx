@@ -22,10 +22,12 @@ export default function App() {
   const [error, setError] = useState('')
   const [lastUpdated, setLastUpdated] = useState('')
   const [soundEnabled, setSoundEnabled] = useState(() => localStorage.getItem('priorityOrderSound') !== 'disabled')
+  const [newOrderIds, setNewOrderIds] = useState([])
   const soundEnabledRef = useRef(soundEnabled)
   const previousOrderIdsRef = useRef(new Set())
   const hasLoadedOrdersRef = useRef(false)
   const notificationAudioRef = useRef(null)
+  const newOrderTimeoutRef = useRef(null)
 
   const todayLabel = useMemo(() => formatIndonesianDate(), [])
 
@@ -92,12 +94,28 @@ export default function App() {
     }
 
     const previousOrderIds = previousOrderIdsRef.current
-    const hasNewOrder = [...nextOrderIds].some((orderId) => !previousOrderIds.has(orderId))
+    const newOrders = [...nextOrderIds].filter((orderId) => !previousOrderIds.has(orderId))
+    const hasNewOrder = newOrders.length > 0
 
     previousOrderIdsRef.current = nextOrderIds
 
-    if (soundEnabledRef.current && hasNewOrder) {
-      playOrderNotificationSound()
+    if (hasNewOrder) {
+      // Clear existing timeout if any
+      if (newOrderTimeoutRef.current) {
+        clearTimeout(newOrderTimeoutRef.current)
+      }
+
+      // Show new order IDs
+      setNewOrderIds(newOrders)
+
+      // Auto-clear after 5 seconds
+      newOrderTimeoutRef.current = setTimeout(() => {
+        setNewOrderIds([])
+      }, 5000)
+
+      if (soundEnabledRef.current) {
+        playOrderNotificationSound()
+      }
     }
   }
 
@@ -145,7 +163,13 @@ export default function App() {
   useEffect(() => {
     loadDashboard()
     const timer = setInterval(loadDashboard, 60_000)
-    return () => clearInterval(timer)
+    
+    return () => {
+      clearInterval(timer)
+      if (newOrderTimeoutRef.current) {
+        clearTimeout(newOrderTimeoutRef.current)
+      }
+    }
   }, [])
 
   const fastOrders = groupedOrders?.tables?.fastDelivery?.orders || []
@@ -166,6 +190,12 @@ export default function App() {
       </header> */}
 
       {error && <div className="alert-error">{error}</div>}
+
+      {newOrderIds.length > 0 && (
+        <div className="alert-new-order">
+          🎉 Pesanan baru: <strong>{newOrderIds.join(', ')}</strong>
+        </div>
+      )}
 
       <section className="summary-grid">
         {summary.map((item) => (
@@ -194,17 +224,16 @@ export default function App() {
             🔊 Test Play
           </button>
         )}
-        {lastUpdated && <span className="last-updated">Update: {lastUpdated}</span>}
+        <div className="last-updated-container">
+          {loading && <span className="loading-dot"></span>}
+          {lastUpdated && <span className="last-updated">Update: {lastUpdated}</span>}
+        </div>
       </div>
 
-      {loading ? (
-        <div className="loading-card">Loading dashboard...</div>
-      ) : (
-        <section className="tables-grid">
-          <OrderTable title="Priority Orders (Instant & Sameday)" tone="priority" orders={fastOrders} />
-          <OrderTable title="Standard Orders (Cargo & Reguler)" tone="standard" orders={standardOrders} />
-        </section>
-      )}
+      <section className="tables-grid">
+        <OrderTable title="Priority Orders (Instant & Sameday)" tone="priority" orders={fastOrders} />
+        <OrderTable title="Standard Orders (Cargo & Reguler)" tone="standard" orders={standardOrders} />
+      </section>
     </main>
   )
 }

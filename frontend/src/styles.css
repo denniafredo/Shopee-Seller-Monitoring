@@ -225,8 +225,34 @@ body {
   transform: scale(0.98);
 }
 
-.last-updated {
+.last-updated-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-left: auto;
+}
+
+.loading-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+.last-updated {
   color: var(--brown);
   font-weight: 600;
 }
@@ -451,6 +477,28 @@ body {
   background: #fff2f2;
   color: #b00020;
   font-weight: 700;
+}
+
+.alert-new-order {
+  margin-bottom: 20px;
+  border: 2px solid #4caf50;
+  border-radius: 14px;
+  background: #f1f8f4;
+  color: #2e7d32;
+  padding: 18px 20px;
+  font-weight: 700;
+  animation: slide-down 0.3s ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .loading-card {
