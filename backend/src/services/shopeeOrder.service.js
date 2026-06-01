@@ -47,7 +47,7 @@ export async function getPendingOrders(params = {}) {
 
   let orders = await getShopeeOrdersWithDetails(params);
 
-  orders = orders.filter((order) => PENDING_STATUSES.includes(order.status) && order.paymentStatus === 'PAID');
+  orders = orders.filter((order) => PENDING_STATUSES.includes(order.status));
 
   if (shippingType) {
     orders = orders.filter((order) => order.shippingType === shippingType);
@@ -128,67 +128,46 @@ export async function refreshShopeeTokenFromEnv() {
 async function getShopeeOrdersWithDetails(params = {}) {
   const { shopId, accessToken } = getShopeeCredential();
   const now = Math.floor(Date.now() / 1000);
+  const defaultTimeFrom = now - 5 * 24 * 60 * 60;
 
-  const rawTimeFrom = params.timeFrom ?? params.time_from;
-  const rawTimeTo = params.timeTo ?? params.time_to;
-  const requestedTimeFrom = rawTimeFrom !== undefined ? Number(rawTimeFrom) : 1;
-  const requestedTimeTo = rawTimeTo !== undefined ? Number(rawTimeTo) : now;
-
-  if (Number.isNaN(requestedTimeFrom) || Number.isNaN(requestedTimeTo)) {
-    const error = new Error('Invalid time_from or time_to parameter');
-    error.statusCode = 400;
-    throw error;
-  }
-
-  const timeFrom = Math.max(1, requestedTimeFrom);
-  const timeTo = Math.min(requestedTimeTo, now);
-
-  if (timeFrom >= timeTo) {
-    const error = new Error('Invalid time range: time_from must be earlier than time_to');
-    error.statusCode = 400;
-    throw error;
-  }
-
+  const timeFrom = Number(params.timeFrom || params.time_from || defaultTimeFrom);
+  const timeTo = Number(params.timeTo || params.time_to || now);
   const pageSize = Number(params.pageSize || params.page_size || 50);
   const timeRangeField = params.timeRangeField || params.time_range_field || 'create_time';
 
   const allOrderSn = [];
-  const timeRanges = splitTimeRanges(timeFrom, timeTo, 15 * 24 * 60 * 60);
+  let cursor = '';
+  let hasMore = true;
 
-  for (const range of timeRanges) {
-    let cursor = '';
-    let hasMore = true;
-
-    while (hasMore) {
-      const listResponse = await shopeeGet({
-        path: '/api/v2/order/get_order_list',
-        accessToken,
-        shopId,
-        params: {
-          time_range_field: timeRangeField,
-          time_from: range.timeFrom,
-          time_to: range.timeTo,
-          page_size: pageSize,
-          cursor
-        }
-      });
-
-      if (listResponse.error) {
-        const error = new Error(listResponse.message || listResponse.error);
-        error.statusCode = 400;
-        error.data = listResponse;
-        throw error;
+  while (hasMore) {
+    const listResponse = await shopeeGet({
+      path: '/api/v2/order/get_order_list',
+      accessToken,
+      shopId,
+      params: {
+        time_range_field: timeRangeField,
+        time_from: timeFrom,
+        time_to: timeTo,
+        page_size: pageSize,
+        cursor
       }
+    });
 
-      const response = listResponse.response || {};
-      const orderList = response.order_list || [];
-      allOrderSn.push(...orderList.map((order) => order.order_sn).filter(Boolean));
-
-      hasMore = Boolean(response.more);
-      cursor = response.next_cursor || '';
-
-      if (!cursor) hasMore = false;
+    if (listResponse.error) {
+      const error = new Error(listResponse.message || listResponse.error);
+      error.statusCode = 400;
+      error.data = listResponse;
+      throw error;
     }
+
+    const response = listResponse.response || {};
+    const orderList = response.order_list || [];
+    allOrderSn.push(...orderList.map((order) => order.order_sn).filter(Boolean));
+
+    hasMore = Boolean(response.more);
+    cursor = response.next_cursor || '';
+
+    if (!cursor) hasMore = false;
   }
 
   if (allOrderSn.length === 0) return [];
@@ -406,19 +385,6 @@ function chunkArray(array, size) {
   }
 
   return chunks;
-}
-
-function splitTimeRanges(timeFrom, timeTo, maxSeconds) {
-  const ranges = [];
-  let start = timeFrom;
-
-  while (start <= timeTo) {
-    const end = Math.min(start + maxSeconds - 1, timeTo);
-    ranges.push({ timeFrom: start, timeTo: end });
-    start = end + 1;
-  }
-
-  return ranges;
 }
 
 function getShippingDeadlineText(shipByTimestamp) {
