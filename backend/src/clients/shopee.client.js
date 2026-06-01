@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import axios from 'axios';
+import { getShopeeTokens, persistShopeeTokens } from '../utils/shopeeTokenStore.js';
 
 const SHOPEE_HOST = process.env.SHOPEE_HOST;
 const PARTNER_ID = Number(process.env.SHOPEE_PARTNER_ID);
@@ -96,13 +97,90 @@ export async function refreshAccessToken({ refreshToken, shopId }) {
   return response.data;
 }
 
+function isInvalidTokenError(data, status) {
+  const message = (data?.message || data?.error || '').toString().toLowerCase();
+
+  return (
+    status === 401 ||
+    message.includes('invalid token') ||
+    message.includes('access token expired') ||
+    message.includes('invalid access token') ||
+    message.includes('access_token is invalid')
+  );
+}
+
+async function autoRefreshShopeeToken() {
+  const { refreshToken, shopId } = getShopeeTokens();
+
+  if (!refreshToken || !shopId) {
+    const error = new Error('SHOPEE_REFRESH_TOKEN or SHOPEE_SHOP_ID is missing for token refresh');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const result = await refreshAccessToken({ refreshToken, shopId });
+  const newAccessToken = result.access_token || result.accessToken;
+  const newRefreshToken = result.refresh_token || result.refreshToken;
+
+  if (!newAccessToken) {
+    const error = new Error('Shopee refresh response did not return a new access token');
+    error.statusCode = 500;
+    throw error;
+  }
+
+  await persistShopeeTokens({
+    accessToken: newAccessToken,
+    refreshToken: newRefreshToken || refreshToken
+  });
+
+  return {
+    accessToken: newAccessToken,
+    refreshToken: newRefreshToken || refreshToken,
+    shopId
+  };
+}
+
 export async function shopeeGet({ path, accessToken, shopId, params = {} }) {
-  const url = buildUrl({ path, accessToken, shopId, extraQuery: params });
+  const currentTokens = getShopeeTokens();
+  accessToken = accessToken || currentTokens.accessToken;
+  shopId = shopId || currentTokens.shopId;
+
+  const doRequest = async (token) => {
+    const url = buildUrl({ path, accessToken: token, shopId, extraQuery: params });
+    const response = await axios.get(url);
+
+    if (isInvalidTokenError(response.data, response.status)) {
+      throw {
+        isShopeeInvalidToken: true,
+        response: { data: response.data, status: response.status }
+      };
+    }
+
+    return response.data;
+  };
 
   try {
-    const response = await axios.get(url);
-    return response.data;
+    return await doRequest(accessToken);
   } catch (error) {
+    const isInvalid =
+      error.isShopeeInvalidToken ||
+      isInvalidTokenError(error.response?.data, error.response?.status);
+
+    if (isInvalid) {
+      console.warn('Shopee access token invalid; refreshing automatically');
+      const refreshed = await autoRefreshShopeeToken();
+      try {
+        return await doRequest(refreshed.accessToken);
+      } catch (secondError) {
+        const secondData = secondError.response?.data || secondError;
+        console.error('Shopee API retry after refresh failed:', secondData);
+        const err = new Error(secondData?.message || secondData?.error || 'Shopee API retry after refresh failed');
+        err.statusCode = secondError.response?.status || 500;
+        err.data = secondData;
+        throw err;
+      }
+    }
+
     const data = error.response?.data;
     console.error('Shopee API Error:', data || error.message);
 
@@ -114,8 +192,7 @@ export async function shopeeGet({ path, accessToken, shopId, params = {} }) {
 }
 
 export function getShopeeCredential() {
-  const shopId = Number(process.env.SHOPEE_SHOP_ID);
-  const accessToken = process.env.SHOPEE_ACCESS_TOKEN;
+  const { shopId, accessToken } = getShopeeTokens();
 
   if (!shopId) {
     const error = new Error('SHOPEE_SHOP_ID is missing');
