@@ -4,6 +4,7 @@ import { formatTimeWIB, getTodayUnixRangeWIB } from '../utils/date.util.js';
 
 export async function getDashboardSummary(params = {}) {
   const orders = await getShopeeOrdersWithDetails(params);
+  console.log(orders);
   const pendingOrders = orders.filter(
     (order) => PENDING_STATUSES.includes(order.status) && order.paymentStatus === 'PAID'
   );
