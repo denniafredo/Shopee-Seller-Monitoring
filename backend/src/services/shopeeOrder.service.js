@@ -131,7 +131,7 @@ async function getShopeeOrdersWithDetails(params = {}) {
 
   const rawTimeFrom = params.timeFrom ?? params.time_from;
   const rawTimeTo = params.timeTo ?? params.time_to;
-  const timeFrom = rawTimeFrom !== undefined ? Number(rawTimeFrom) : 0;
+  const timeFrom = rawTimeFrom !== undefined ? Number(rawTimeFrom) : 1;
   const timeTo = rawTimeTo !== undefined ? Number(rawTimeTo) : now;
   const pageSize = Number(params.pageSize || params.page_size || 50);
   const timeRangeField = params.timeRangeField || params.time_range_field || 'create_time';
