@@ -1,6 +1,7 @@
 import { shopeeGet, getShopeeCredential, refreshAccessToken } from '../clients/shopee.client.js';
 import { ORDER_STATUS, PENDING_STATUSES, SHIPPING_TYPE } from '../constants/order.constant.js';
 import { formatTimeWIB, getTodayUnixRangeWIB } from '../utils/date.util.js';
+import { persistShopeeTokens } from '../utils/shopeeTokenStore.js';
 
 export async function getDashboardSummary(params = {}) {
   const orders = await getShopeeOrdersWithDetails(params);
@@ -117,8 +118,7 @@ export async function syncShopeeOrdersFromApi(params = {}) {
 }
 
 export async function refreshShopeeTokenFromEnv() {
-  const refreshToken = process.env.SHOPEE_REFRESH_TOKEN;
-  const shopId = Number(process.env.SHOPEE_SHOP_ID);
+  const { refreshToken, shopId } = getShopeeCredential();
 
   if (!refreshToken || !shopId) {
     const error = new Error('SHOPEE_REFRESH_TOKEN or SHOPEE_SHOP_ID is missing');
@@ -126,7 +126,18 @@ export async function refreshShopeeTokenFromEnv() {
     throw error;
   }
 
-  return refreshAccessToken({ refreshToken, shopId });
+  const result = await refreshAccessToken({ refreshToken, shopId });
+  const newAccessToken = result.access_token || result.accessToken;
+  const newRefreshToken = result.refresh_token || result.refreshToken;
+
+  if (newAccessToken) {
+    await persistShopeeTokens({
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken || refreshToken
+    });
+  }
+
+  return result;
 }
 
 async function getShopeeOrdersWithDetails(params = {}) {
