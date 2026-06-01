@@ -7,7 +7,6 @@ export async function getDashboardSummary(params = {}) {
   const pendingOrders = orders.filter(
     (order) => PENDING_STATUSES.includes(order.status) && order.paymentStatus === 'PAID'
   );
-  console.log(orders);
 
   const countMap = pendingOrders.reduce((acc, order) => {
     acc[order.shippingType] = (acc[order.shippingType] || 0) + 1;
@@ -61,6 +60,7 @@ export async function getPendingOrders(params = {}) {
   if (status) {
     orders = orders.filter((order) => order.status === status);
   }
+  console.log(orders);
 
   const total = orders.length;
   const start = (page - 1) * limit;
