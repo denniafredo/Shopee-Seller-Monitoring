@@ -4,10 +4,10 @@ import { formatTimeWIB, getTodayUnixRangeWIB } from '../utils/date.util.js';
 
 export async function getDashboardSummary(params = {}) {
   const orders = await getShopeeOrdersWithDetails(params);
-  console.log(orders);
   const pendingOrders = orders.filter(
     (order) => PENDING_STATUSES.includes(order.status) && order.paymentStatus === 'PAID'
   );
+  console.log(orders);
 
   const countMap = pendingOrders.reduce((acc, order) => {
     acc[order.shippingType] = (acc[order.shippingType] || 0) + 1;
