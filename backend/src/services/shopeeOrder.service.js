@@ -60,7 +60,6 @@ export async function getPendingOrders(params = {}) {
   if (status) {
     orders = orders.filter((order) => order.status === status);
   }
-  console.log(orders);
 
   const total = orders.length;
   const start = (page - 1) * limit;
