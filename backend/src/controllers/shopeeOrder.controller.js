@@ -7,6 +7,7 @@ import {
   getPendingOrdersGrouped
 } from '../services/shopeeOrder.service.js';
 import { getShopeeAuthUrl, getAccessToken } from '../clients/shopee.client.js';
+import { persistShopeeTokens } from '../utils/shopeeTokenStore.js';
 import { formatDateWIB, formatTimeWIB, getTodayUnixRangeWIB } from '../utils/date.util.js';
 
 export async function authShopee(req, res, next) {
@@ -29,10 +30,15 @@ export async function shopeeAuthCallback(req, res, next) {
     }
 
     const result = await getAccessToken({ code, shopId: shop_id });
+    const accessToken = result.access_token || result.accessToken;
+    const refreshToken = result.refresh_token || result.refreshToken;
+    const shopId = result.shop_id || result.shopId || shop_id;
+
+    await persistShopeeTokens({ accessToken, refreshToken, shopId });
 
     res.json({
       success: true,
-      message: 'Shopee token generated. Copy shop_id, access_token, and refresh_token to your .env file, then restart server.',
+      message: 'Shopee token generated and saved to .env. Restart server to use updated credentials.',
       data: result
     });
   } catch (error) {

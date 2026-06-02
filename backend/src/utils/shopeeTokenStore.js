@@ -29,6 +29,10 @@ async function writeEnvFile(updates) {
       return updates.SHOPEE_REFRESH_TOKEN ?? line;
     }
 
+    if (line.startsWith('SHOPEE_SHOP_ID=')) {
+      return updates.SHOPEE_SHOP_ID ?? line;
+    }
+
     return line;
   });
 
@@ -38,12 +42,15 @@ async function writeEnvFile(updates) {
   if (updates.SHOPEE_REFRESH_TOKEN && !lines.some((line) => line.startsWith('SHOPEE_REFRESH_TOKEN='))) {
     resultLines.push(`SHOPEE_REFRESH_TOKEN=${updates.SHOPEE_REFRESH_TOKEN}`);
   }
+  if (updates.SHOPEE_SHOP_ID && !lines.some((line) => line.startsWith('SHOPEE_SHOP_ID='))) {
+    resultLines.push(`SHOPEE_SHOP_ID=${updates.SHOPEE_SHOP_ID}`);
+  }
 
   await fs.writeFile(envFilePath, resultLines.join('\n'), 'utf8');
 }
 
-export async function persistShopeeTokens({ accessToken, refreshToken }) {
-  if (!accessToken && !refreshToken) return;
+export async function persistShopeeTokens({ accessToken, refreshToken, shopId }) {
+  if (!accessToken && !refreshToken && !shopId) return;
 
   if (accessToken) {
     tokenCache.accessToken = accessToken;
@@ -55,8 +62,14 @@ export async function persistShopeeTokens({ accessToken, refreshToken }) {
     process.env.SHOPEE_REFRESH_TOKEN = refreshToken;
   }
 
+  if (shopId !== undefined && shopId !== null) {
+    tokenCache.shopId = Number(shopId);
+    process.env.SHOPEE_SHOP_ID = String(shopId);
+  }
+
   await writeEnvFile({
     ...(accessToken ? { SHOPEE_ACCESS_TOKEN: accessToken } : {}),
-    ...(refreshToken ? { SHOPEE_REFRESH_TOKEN: refreshToken } : {})
+    ...(refreshToken ? { SHOPEE_REFRESH_TOKEN: refreshToken } : {}),
+    ...(shopId !== undefined && shopId !== null ? { SHOPEE_SHOP_ID: shopId } : {})
   });
 }
