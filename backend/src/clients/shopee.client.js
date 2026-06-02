@@ -140,6 +140,26 @@ async function autoRefreshShopeeToken() {
   };
 }
 
+export function startShopeeTokenAutoRefresh() {
+  const intervalMs = Number(process.env.SHOPEE_AUTO_REFRESH_TOKEN_INTERVAL_MS) || 3 * 60 * 60 * 1000;
+  if (!intervalMs || intervalMs <= 0) return;
+
+  const refresh = async () => {
+    try {
+      const result = await autoRefreshShopeeToken();
+      console.log('Shopee token auto refreshed:', {
+        shopId: result.shopId,
+        accessToken: result.accessToken ? 'updated' : 'unchanged'
+      });
+    } catch (error) {
+      console.error('Shopee auto refresh failed:', error?.message || error);
+    }
+  };
+
+  refresh();
+  setInterval(refresh, intervalMs);
+}
+
 export async function shopeeGet({ path, accessToken, shopId, params = {} }) {
   const currentTokens = getShopeeTokens();
   accessToken = accessToken || currentTokens.accessToken;

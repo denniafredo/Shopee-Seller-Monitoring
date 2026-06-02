@@ -1,7 +1,7 @@
 import { shopeeGet, getShopeeCredential, refreshAccessToken } from '../clients/shopee.client.js';
 import { ORDER_STATUS, PENDING_STATUSES, SHIPPING_TYPE } from '../constants/order.constant.js';
 import { formatTimeWIB, getTodayUnixRangeWIB } from '../utils/date.util.js';
-import { persistShopeeTokens } from '../utils/shopeeTokenStore.js';
+import { getShopeeTokens, persistShopeeTokens } from '../utils/shopeeTokenStore.js';
 
 export async function getDashboardSummary(params = {}) {
   const orders = await getShopeeOrdersWithDetails(params);
@@ -118,7 +118,7 @@ export async function syncShopeeOrdersFromApi(params = {}) {
 }
 
 export async function refreshShopeeTokenFromEnv() {
-  const { refreshToken, shopId } = getShopeeCredential();
+  const { refreshToken, shopId } = getShopeeTokens();
 
   if (!refreshToken || !shopId) {
     const error = new Error('SHOPEE_REFRESH_TOKEN or SHOPEE_SHOP_ID is missing');

@@ -69,7 +69,7 @@ export async function persistShopeeTokens({ accessToken, refreshToken, shopId })
     tokenCache.shopId = Number(shopId);
     process.env.SHOPEE_SHOP_ID = String(shopId);
   }
-  console.log('Updated Shopee tokens in memory:', { accessToken: tokenCache.accessToken, refreshToken: tokenCache.refreshToken, shopId: tokenCache.shopId });
+  getShopeeTokens();
 
   // await writeEnvFile({
   //   ...(accessToken ? { SHOPEE_ACCESS_TOKEN: accessToken } : {}),
