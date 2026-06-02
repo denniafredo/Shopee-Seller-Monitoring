@@ -3,10 +3,12 @@ import path from 'path';
 
 const envFilePath = path.resolve(process.cwd(), '.env');
 
+const rawShopId = process.env.SHOPEE_SHOP_ID?.trim().replace(/^['"]|['"]$/g, '');
+
 let tokenCache = {
   accessToken: process.env.SHOPEE_ACCESS_TOKEN,
   refreshToken: process.env.SHOPEE_REFRESH_TOKEN,
-  shopId: Number(process.env.SHOPEE_SHOP_ID)
+  shopId: Number(rawShopId)
 };
 
 export function getShopeeTokens() {
@@ -43,7 +45,8 @@ async function writeEnvFile(updates) {
     resultLines.push(`SHOPEE_REFRESH_TOKEN=${updates.SHOPEE_REFRESH_TOKEN}`);
   }
   if (updates.SHOPEE_SHOP_ID && !lines.some((line) => line.startsWith('SHOPEE_SHOP_ID='))) {
-    resultLines.push(`SHOPEE_SHOP_ID=${updates.SHOPEE_SHOP_ID}`);
+    const cleanShopId = String(updates.SHOPEE_SHOP_ID).trim().replace(/^['"]|['"]$/g, '');
+    resultLines.push(`SHOPEE_SHOP_ID=${cleanShopId}`);
   }
 
   await fs.writeFile(envFilePath, resultLines.join('\n'), 'utf8');
