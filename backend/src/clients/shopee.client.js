@@ -192,8 +192,8 @@ export async function shopeeGet({ path, accessToken, shopId, params = {} }) {
 }
 
 export function getShopeeCredential() {
-  const { shopId, accessToken } = getShopeeTokens();
-  console.log(shopId, accessToken);
+  const { shopId, accessToken, refreshToken } = getShopeeTokens();
+
   if (!shopId) {
     const error = new Error('SHOPEE_SHOP_ID is missing');
     error.statusCode = 400;
@@ -206,5 +206,5 @@ export function getShopeeCredential() {
     throw error;
   }
 
-  return { shopId, accessToken };
+  return { shopId, accessToken, refreshToken };
 }
