@@ -136,7 +136,7 @@ export async function refreshShopeeTokenFromEnv() {
       refreshToken: newRefreshToken || refreshToken
     });
   }
-
+  console.log('Token refresh result:', result);
   return result;
 }
 
