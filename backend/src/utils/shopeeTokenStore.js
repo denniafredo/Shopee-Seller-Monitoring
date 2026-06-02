@@ -69,10 +69,11 @@ export async function persistShopeeTokens({ accessToken, refreshToken, shopId })
     tokenCache.shopId = Number(shopId);
     process.env.SHOPEE_SHOP_ID = String(shopId);
   }
+  console.log('Updated Shopee tokens in memory:', { accessToken: !!accessToken, refreshToken: !!refreshToken, shopId });
 
-  await writeEnvFile({
-    ...(accessToken ? { SHOPEE_ACCESS_TOKEN: accessToken } : {}),
-    ...(refreshToken ? { SHOPEE_REFRESH_TOKEN: refreshToken } : {}),
-    ...(shopId !== undefined && shopId !== null ? { SHOPEE_SHOP_ID: shopId } : {})
-  });
+  // await writeEnvFile({
+  //   ...(accessToken ? { SHOPEE_ACCESS_TOKEN: accessToken } : {}),
+  //   ...(refreshToken ? { SHOPEE_REFRESH_TOKEN: refreshToken } : {}),
+  //   ...(shopId !== undefined && shopId !== null ? { SHOPEE_SHOP_ID: shopId } : {})
+  // });
 }
