@@ -3,7 +3,7 @@ import { CalendarDays, RefreshCw, Volume2, VolumeX } from 'lucide-react'
 import SummaryCard from './components/SummaryCard'
 import OrderTable from './components/OrderTable'
 import { formatIndonesianDate } from './utils/format'
-import { getDashboardSummary, getPendingOrdersGrouped, syncTodayOrders } from './services/shopeeApi'
+import { getPendingOrdersGrouped, syncTodayOrders } from './services/shopeeApi'
 import notificationSoundUrl from './assets/orderan_gofodd.mp3'
 import './styles.css'
 
@@ -36,14 +36,11 @@ export default function App() {
       setError('')
       setLoading(true)
 
-      const [summaryRes, groupedRes] = await Promise.all([
-        getDashboardSummary(),
-        getPendingOrdersGrouped()
-      ])
+      const groupedRes = await getPendingOrdersGrouped()
 
-      setSummary(mergeSummary(summaryRes?.summary || []))
+      setSummary(mergeSummary(buildSummaryFromGrouped(groupedRes)))
       setGroupedOrders(groupedRes)
-      setLastUpdated(groupedRes?.lastUpdated || summaryRes?.lastUpdated || '')
+      setLastUpdated(groupedRes?.lastUpdated || '')
       notifyForNewOrders(groupedRes)
     } catch (err) {
       setError(err.message || 'Gagal mengambil data dashboard')
@@ -253,4 +250,18 @@ function getVisibleOrderIds(groupedRes) {
   const visibleOrders = [...fastOrders, ...standardOrders]
 
   return new Set(visibleOrders.map((order) => order.orderNo).filter(Boolean))
+}
+
+function buildSummaryFromGrouped(groupedRes) {
+  const fastOrders = groupedRes?.tables?.fastDelivery?.orders || []
+  const standardOrders = groupedRes?.tables?.standardDelivery?.orders || []
+  const countMap = [...fastOrders, ...standardOrders].reduce((acc, order) => {
+    acc[order.shippingType] = (acc[order.shippingType] || 0) + 1
+    return acc
+  }, {})
+
+  return DEFAULT_SUMMARY.map((item) => ({
+    type: item.type,
+    pendingCount: countMap[item.type] || 0
+  }))
 }

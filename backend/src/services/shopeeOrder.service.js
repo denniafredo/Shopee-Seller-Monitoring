@@ -3,11 +3,12 @@ import { ORDER_STATUS, PENDING_STATUSES, SHIPPING_TYPE } from '../constants/orde
 import { formatTimeWIB, getTodayUnixRangeWIB } from '../utils/date.util.js';
 import { getShopeeTokens, persistShopeeTokens } from '../utils/shopeeTokenStore.js';
 
+const DEFAULT_ORDER_LOOKBACK_DAYS = 5;
+const DEFAULT_PENDING_LOOKBACK_DAYS = 90;
+const MAX_ORDER_LIST_RANGE_DAYS = 15;
+
 export async function getDashboardSummary(params = {}) {
-  const orders = await getShopeeOrdersWithDetails(params);
-  const pendingOrders = orders.filter(
-    (order) => PENDING_STATUSES.includes(order.status) && order.paymentStatus === 'PAID' && order.shopeeStatus != 'UNPAID'
-  );
+  const pendingOrders = await getPendingOrdersForDisplay(params);
 
   const countMap = pendingOrders.reduce((acc, order) => {
     acc[order.shippingType] = (acc[order.shippingType] || 0) + 1;
@@ -48,19 +49,7 @@ export async function getPendingOrders(params = {}) {
   const shippingType = params.shippingType || null;
   const status = params.status || null;
 
-  let orders = await getShopeeOrdersWithDetails(params);
-
-  orders = orders.filter(
-    (order) => PENDING_STATUSES.includes(order.status) && order.paymentStatus === 'PAID' && order.shopeeStatus != 'UNPAID'
-  );
-
-  if (shippingType) {
-    orders = orders.filter((order) => order.shippingType === shippingType);
-  }
-
-  if (status) {
-    orders = orders.filter((order) => order.status === status);
-  }
+  let orders = await getPendingOrdersForDisplay(params);
 
   const total = orders.length;
   const start = (page - 1) * limit;
@@ -143,51 +132,68 @@ export async function refreshShopeeTokenFromEnv() {
 async function getShopeeOrdersWithDetails(params = {}) {
   const { shopId, accessToken } = getShopeeCredential();
   const now = Math.floor(Date.now() / 1000);
-  const defaultTimeFrom = now - 5 * 24 * 60 * 60;
+  const explicitTimeFrom = params.timeFrom || params.time_from;
+  const explicitTimeTo = params.timeTo || params.time_to;
+  const lookbackDays = Number(
+    params.lookbackDays ||
+      params.lookback_days ||
+      process.env.SHOPEE_ORDER_LOOKBACK_DAYS ||
+      DEFAULT_ORDER_LOOKBACK_DAYS
+  );
+  const defaultTimeFrom = now - lookbackDays * 24 * 60 * 60;
 
-  const timeFrom = Number(params.timeFrom || params.time_from || defaultTimeFrom);
-  const timeTo = Number(params.timeTo || params.time_to || now);
+  const timeFrom = Number(explicitTimeFrom || defaultTimeFrom);
+  const timeTo = Number(explicitTimeTo || now);
   const pageSize = Number(params.pageSize || params.page_size || 50);
   const timeRangeField = params.timeRangeField || params.time_range_field || 'create_time';
+  const timeRanges = buildTimeRanges({ timeFrom, timeTo });
 
-  const allOrderSn = [];
-  let cursor = '';
-  let hasMore = true;
+  const allOrderSn = new Set();
 
-  while (hasMore) {
-    const listResponse = await shopeeGet({
-      path: '/api/v2/order/get_order_list',
-      accessToken,
-      shopId,
-      params: {
-        time_range_field: timeRangeField,
-        time_from: timeFrom,
-        time_to: timeTo,
-        page_size: pageSize,
-        cursor
+  for (const range of timeRanges) {
+    let cursor = '';
+    let hasMore = true;
+
+    while (hasMore) {
+      const listResponse = await shopeeGet({
+        path: '/api/v2/order/get_order_list',
+        accessToken,
+        shopId,
+        params: {
+          time_range_field: timeRangeField,
+          time_from: range.timeFrom,
+          time_to: range.timeTo,
+          page_size: pageSize,
+          cursor
+        }
+      });
+
+      if (listResponse.error) {
+        const error = new Error(listResponse.message || listResponse.error);
+        error.statusCode = 400;
+        error.data = listResponse;
+        throw error;
       }
-    });
 
-    if (listResponse.error) {
-      const error = new Error(listResponse.message || listResponse.error);
-      error.statusCode = 400;
-      error.data = listResponse;
-      throw error;
+      const response = listResponse.response || {};
+      const orderList = response.order_list || [];
+      orderList
+        .map((order) => order.order_sn)
+        .filter(Boolean)
+        .forEach((orderSn) => allOrderSn.add(orderSn));
+
+      hasMore = Boolean(response.more);
+      cursor = response.next_cursor || '';
+
+      if (!cursor) hasMore = false;
     }
-
-    const response = listResponse.response || {};
-    const orderList = response.order_list || [];
-    allOrderSn.push(...orderList.map((order) => order.order_sn).filter(Boolean));
-
-    hasMore = Boolean(response.more);
-    cursor = response.next_cursor || '';
-
-    if (!cursor) hasMore = false;
   }
 
-  if (allOrderSn.length === 0) return [];
+  const orderSnList = [...allOrderSn];
 
-  const detailChunks = chunkArray(allOrderSn, 50);
+  if (orderSnList.length === 0) return [];
+
+  const detailChunks = chunkArray(orderSnList, 50);
   const details = [];
 
   for (const chunk of detailChunks) {
@@ -218,23 +224,22 @@ async function getShopeeOrdersWithDetails(params = {}) {
 }
 
 export async function getPendingOrdersGrouped(params = {}) {
-  const result = await getPendingOrders(params);
+  const orders = await getPendingOrdersForDisplay(params);
+  const formattedOrders = orders.map(formatOrderForTable);
 
   const fastDeliveryTypes = ['INSTANT', 'SAMEDAY'];
   const standardDeliveryTypes = ['CARGO', 'REGULER'];
 
-  const fastDeliveryOrders = result.orders.filter((order) =>
+  const fastDeliveryOrders = formattedOrders.filter((order) =>
     fastDeliveryTypes.includes(order.shippingType)
   );
 
-  const standardDeliveryOrders = result.orders.filter((order) =>
+  const standardDeliveryOrders = formattedOrders.filter((order) =>
     standardDeliveryTypes.includes(order.shippingType)
   );
 
   return {
-    date: result.date,
-    lastUpdated: result.lastUpdated,
-    total: result.total,
+    total: formattedOrders.length,
     tables: {
       fastDelivery: {
         label: 'Instant & Sameday',
@@ -250,6 +255,40 @@ export async function getPendingOrdersGrouped(params = {}) {
       }
     }
   };
+}
+
+async function getPendingOrdersForDisplay(params = {}) {
+  const shippingType = params.shippingType || null;
+  const status = params.status || null;
+  const pendingLookbackDays = Number(
+    params.pendingLookbackDays ||
+      params.pending_lookback_days ||
+      params.lookbackDays ||
+      params.lookback_days ||
+      process.env.SHOPEE_PENDING_LOOKBACK_DAYS ||
+      DEFAULT_PENDING_LOOKBACK_DAYS
+  );
+
+  let orders = await getShopeeOrdersWithDetails({
+    ...params,
+    lookbackDays: pendingLookbackDays
+  });
+
+  orders = orders.filter((order) =>
+    PENDING_STATUSES.includes(order.status) &&
+    order.paymentStatus === 'PAID' &&
+    order.shopeeStatus !== 'UNPAID'
+  );
+
+  if (shippingType) {
+    orders = orders.filter((order) => order.shippingType === shippingType);
+  }
+
+  if (status) {
+    orders = orders.filter((order) => order.status === status);
+  }
+
+  return orders;
 }
 
 function getOptionalFields() {
@@ -400,6 +439,25 @@ function chunkArray(array, size) {
   }
 
   return chunks;
+}
+
+function buildTimeRanges({ timeFrom, timeTo }) {
+  const maxRangeSeconds = MAX_ORDER_LIST_RANGE_DAYS * 24 * 60 * 60;
+  const ranges = [];
+  let rangeTo = timeTo;
+
+  while (rangeTo >= timeFrom) {
+    const rangeFrom = Math.max(timeFrom, rangeTo - maxRangeSeconds + 1);
+
+    ranges.push({
+      timeFrom: rangeFrom,
+      timeTo: rangeTo
+    });
+
+    rangeTo = rangeFrom - 1;
+  }
+
+  return ranges;
 }
 
 function getShippingDeadlineText(shipByTimestamp) {
