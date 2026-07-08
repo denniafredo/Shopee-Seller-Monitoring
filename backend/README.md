@@ -86,7 +86,7 @@ List pending:
 GET http://localhost:3000/api/shopee/orders/pending
 ```
 
-Secara default endpoint pending/dashboard mengambil pesanan pending dari 90 hari terakhir dan memecah request ke beberapa range waktu. Kalau perlu lebih jauh, set di `.env`:
+Secara default endpoint pending/dashboard mengambil pesanan pending dari 5 hari terakhir dan memecah request ke beberapa range waktu. Kalau perlu lebih jauh, set di `.env`:
 
 ```env
 SHOPEE_PENDING_LOOKBACK_DAYS=180

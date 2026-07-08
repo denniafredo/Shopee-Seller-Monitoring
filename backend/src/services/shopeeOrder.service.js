@@ -4,7 +4,7 @@ import { formatTimeWIB, getTodayUnixRangeWIB } from '../utils/date.util.js';
 import { getShopeeTokens, persistShopeeTokens } from '../utils/shopeeTokenStore.js';
 
 const DEFAULT_ORDER_LOOKBACK_DAYS = 5;
-const DEFAULT_PENDING_LOOKBACK_DAYS = 90;
+const DEFAULT_PENDING_LOOKBACK_DAYS = 5;
 const MAX_ORDER_LIST_RANGE_DAYS = 15;
 
 export async function getDashboardSummary(params = {}) {
