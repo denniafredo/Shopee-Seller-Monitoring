@@ -136,9 +136,9 @@ async function getShopeeOrdersWithDetails(params = {}) {
   const explicitTimeTo = params.timeTo || params.time_to;
   const lookbackDays = Number(
     params.lookbackDays ||
-      params.lookback_days ||
-      process.env.SHOPEE_ORDER_LOOKBACK_DAYS ||
-      DEFAULT_ORDER_LOOKBACK_DAYS
+    params.lookback_days ||
+    process.env.SHOPEE_ORDER_LOOKBACK_DAYS ||
+    DEFAULT_ORDER_LOOKBACK_DAYS
   );
   const defaultTimeFrom = now - lookbackDays * 24 * 60 * 60;
 
@@ -262,11 +262,11 @@ async function getPendingOrdersForDisplay(params = {}) {
   const status = params.status || null;
   const pendingLookbackDays = Number(
     params.pendingLookbackDays ||
-      params.pending_lookback_days ||
-      params.lookbackDays ||
-      params.lookback_days ||
-      process.env.SHOPEE_PENDING_LOOKBACK_DAYS ||
-      DEFAULT_PENDING_LOOKBACK_DAYS
+    params.pending_lookback_days ||
+    params.lookbackDays ||
+    params.lookback_days ||
+    process.env.SHOPEE_PENDING_LOOKBACK_DAYS ||
+    DEFAULT_PENDING_LOOKBACK_DAYS
   );
 
   let orders = await getShopeeOrdersWithDetails({
@@ -287,6 +287,12 @@ async function getPendingOrdersForDisplay(params = {}) {
   if (status) {
     orders = orders.filter((order) => order.status === status);
   }
+
+  orders.sort((a, b) => {
+    const aTime = a.shipByTimestamp || Infinity;
+    const bTime = b.shipByTimestamp || Infinity;
+    return aTime - bTime;
+  });
 
   return orders;
 }
