@@ -289,6 +289,12 @@ async function getPendingOrdersForDisplay(params = {}) {
   }
 
   orders.sort((a, b) => {
+    const aIsNew = a.status === ORDER_STATUS.BARU;
+    const bIsNew = b.status === ORDER_STATUS.BARU;
+
+    if (aIsNew && !bIsNew) return -1;
+    if (!aIsNew && bIsNew) return 1;
+
     const aTime = a.shipByTimestamp || Infinity;
     const bTime = b.shipByTimestamp || Infinity;
     return aTime - bTime;
