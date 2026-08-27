@@ -7,6 +7,8 @@ import { getPendingOrdersGrouped, syncTodayOrders } from './services/shopeeApi'
 import notificationSoundUrl from './assets/orderan_gofodd.mp3'
 import './styles.css'
 
+const NEW_ORDER_HIGHLIGHT_MS = 60_000
+
 const DEFAULT_SUMMARY = [
   { type: 'INSTANT', label: 'INSTANT', pendingCount: 0 },
   { type: 'SAMEDAY', label: 'SAMEDAY', pendingCount: 0 },
@@ -23,11 +25,13 @@ export default function App() {
   const [lastUpdated, setLastUpdated] = useState('')
   const [soundEnabled, setSoundEnabled] = useState(() => localStorage.getItem('priorityOrderSound') !== 'disabled')
   const [newOrderIds, setNewOrderIds] = useState([])
+  const [highlightedOrderIds, setHighlightedOrderIds] = useState([])
   const soundEnabledRef = useRef(soundEnabled)
   const previousOrderIdsRef = useRef(new Set())
   const hasLoadedOrdersRef = useRef(false)
   const notificationAudioRef = useRef(null)
   const newOrderTimeoutRef = useRef(null)
+  const highlightTimersRef = useRef(new Map())
 
   const todayLabel = useMemo(() => formatIndonesianDate(), [])
 
@@ -110,6 +114,23 @@ export default function App() {
         setNewOrderIds([])
       }, 5000)
 
+      // Highlight the rows green for 1 minute, each order on its own timer
+      setHighlightedOrderIds((current) => [...new Set([...current, ...newOrders])])
+
+      newOrders.forEach((orderId) => {
+        const runningTimer = highlightTimersRef.current.get(orderId)
+        if (runningTimer) {
+          clearTimeout(runningTimer)
+        }
+
+        const timer = setTimeout(() => {
+          highlightTimersRef.current.delete(orderId)
+          setHighlightedOrderIds((current) => current.filter((id) => id !== orderId))
+        }, NEW_ORDER_HIGHLIGHT_MS)
+
+        highlightTimersRef.current.set(orderId, timer)
+      })
+
       if (soundEnabledRef.current) {
         playOrderNotificationSound()
       }
@@ -166,11 +187,14 @@ export default function App() {
       if (newOrderTimeoutRef.current) {
         clearTimeout(newOrderTimeoutRef.current)
       }
+      highlightTimersRef.current.forEach((timer) => clearTimeout(timer))
+      highlightTimersRef.current.clear()
     }
   }, [])
 
   const fastOrders = groupedOrders?.tables?.fastDelivery?.orders || []
   const standardOrders = groupedOrders?.tables?.standardDelivery?.orders || []
+  const highlightedOrderIdSet = useMemo(() => new Set(highlightedOrderIds), [highlightedOrderIds])
 
   return (
     <main className="dashboard">
@@ -228,8 +252,18 @@ export default function App() {
       </div>
 
       <section className="tables-grid">
-        <OrderTable title="Priority Orders (Instant & Sameday)" tone="priority" orders={fastOrders} />
-        <OrderTable title="Standard Orders (Cargo & Reguler)" tone="standard" orders={standardOrders} />
+        <OrderTable
+          title="Priority Orders (Instant & Sameday)"
+          tone="priority"
+          orders={fastOrders}
+          highlightedOrderIds={highlightedOrderIdSet}
+        />
+        <OrderTable
+          title="Standard Orders (Cargo & Reguler)"
+          tone="standard"
+          orders={standardOrders}
+          highlightedOrderIds={highlightedOrderIdSet}
+        />
       </section>
     </main>
   )

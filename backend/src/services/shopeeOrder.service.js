@@ -316,6 +316,7 @@ function getOptionalFields() {
     'order_status',
     'create_time',
     'update_time',
+    'pay_time',
     'item_image',
     'image_info',
     'ship_by_date'
@@ -327,6 +328,7 @@ function normalizeShopeeOrder(order) {
 
   const recipient = order.recipient_address || {};
   const orderDate = order.create_time ? new Date(order.create_time * 1000) : new Date();
+  const payDate = order.pay_time ? new Date(order.pay_time * 1000) : null;
 
   return {
     orderNo: order.order_sn,
@@ -335,6 +337,8 @@ function normalizeShopeeOrder(order) {
     courierName: order.shipping_carrier || null,
     orderTime: orderDate.toISOString(),
     orderTimeText: formatTimeWIB(orderDate),
+    payTime: payDate ? payDate.toISOString() : null,
+    payTimeText: payDate ? formatTimeWIB(payDate) : null,
     shopeeStatus: order.order_status || null,
     status: mapShopeeStatus(order.order_status),
     shipByDate: order.ship_by_date
@@ -390,6 +394,7 @@ function formatOrderForTable(order) {
     orderNo: order.orderNo,
     shippingType: order.shippingType,
     orderTime: order.orderTimeText,
+    payTime: order.payTimeText,
     status: order.status,
     shopeeStatus: order.shopeeStatus,
     courierName: order.courierName,

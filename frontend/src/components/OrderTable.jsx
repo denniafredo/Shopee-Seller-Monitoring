@@ -1,8 +1,9 @@
+import { OrderIcon, MoneyIcon } from './OrderIcons'
 import ProductImage from './ProductImage'
 import StatusBadge from './StatusBadge'
 import { formatVariantText, getDisplayImage, normalizeTime } from '../utils/format'
 
-export default function OrderTable({ title, tone = 'standard', orders = [] }) {
+export default function OrderTable({ title, tone = 'standard', orders = [], highlightedOrderIds }) {
   return (
     <section className={`order-panel order-panel--${tone}`}>
       <div className="order-panel__header">
@@ -20,22 +21,38 @@ export default function OrderTable({ title, tone = 'standard', orders = [] }) {
         {orders.length === 0 ? (
           <div className="empty-state">Belum ada pesanan.</div>
         ) : (
-          orders.map((order) => <OrderRow key={order.orderNo} order={order} tone={order.shippingType || tone} />)
+          orders.map((order) => (
+            <OrderRow
+              key={order.orderNo}
+              order={order}
+              tone={order.shippingType || tone}
+              isNew={Boolean(highlightedOrderIds?.has(order.orderNo))}
+            />
+          ))
         )}
       </div>
     </section>
   )
 }
 
-function OrderRow({ order, tone }) {
+function OrderRow({ order, tone, isNew = false }) {
   const items = order.items || []
   const shippingType = order.shippingType ? order.shippingType.toLowerCase() : tone
-  
+
   return (
-    <div className={`order-row order-row--${shippingType}`}>
+    <div className={`order-row order-row--${shippingType} ${isNew ? 'order-row--new' : ''}`}>
       <div className="order-cell order-cell--number">
         <strong>{order.orderNo}</strong>
-        <span>{normalizeTime(order.orderTime)}</span>
+        <span className="order-time" title="Jam pesanan masuk">
+          <OrderIcon size={22} />
+          {normalizeTime(order.orderTime)}
+        </span>
+        {order.payTime && (
+          <span className="order-time order-time--paid" title="Jam pesanan dibayar">
+            <MoneyIcon size={22} />
+            {normalizeTime(order.payTime)}
+          </span>
+        )}
       </div>
 
       <div className="order-cell order-cell--items">

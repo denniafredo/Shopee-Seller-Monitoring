@@ -320,6 +320,33 @@ body {
   background: var(--yellow);
 }
 
+/* Pesanan baru: baris hijau selama 1 menit */
+.order-panel .order-row--new {
+  background: #dcfce7;
+  box-shadow: inset 5px 0 0 #16a34a;
+  animation: newOrderFlash 1.6s ease-in-out infinite;
+}
+
+.order-panel .order-row--new .order-cell--number span {
+  color: #15803d;
+}
+
+@keyframes newOrderFlash {
+  0%,
+  100% {
+    background: #dcfce7;
+  }
+  50% {
+    background: #bbf7d0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-panel .order-row--new {
+    animation: none;
+  }
+}
+
 .order-cell--number strong {
   display: block;
   margin-bottom: 6px;
@@ -337,6 +364,25 @@ body {
 .order-panel--standard .order-cell--number span {
   color: #7f756e;
   font-weight: 500;
+}
+
+.order-cell--number .order-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.4;
+}
+
+.order-cell--number .order-time svg {
+  flex-shrink: 0;
+}
+
+.order-cell--number .order-time--paid {
+  color: #15803d;
+}
+
+.order-panel--standard .order-cell--number .order-time--paid {
+  color: #4d7c4f;
 }
 
 .order-cell--items {
@@ -653,6 +699,15 @@ body {
 
   .order-cell--number span {
     font-size: 12px;
+  }
+
+  .order-cell--number .order-time {
+    gap: 4px;
+  }
+
+  .order-cell--number .order-time svg {
+    width: 17px;
+    height: 17px;
   }
 
   .order-cell--items {
