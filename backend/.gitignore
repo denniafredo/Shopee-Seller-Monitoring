@@ -2,3 +2,7 @@ node_modules
 .env
 .DS_Store
 npm-debug.log*
+
+# BCA QRIS puppeteer session + debug artifacts
+.qris-session/
+.qris-debug/

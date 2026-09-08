@@ -2,8 +2,11 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { CalendarDays, RefreshCw, Volume2, VolumeX } from 'lucide-react'
 import SummaryCard from './components/SummaryCard'
 import OrderTable from './components/OrderTable'
+import QrisSettlementCard from './components/QrisSettlementCard'
+import QrisSettlementPopup from './components/QrisSettlementPopup'
 import { formatIndonesianDate } from './utils/format'
 import { getPendingOrdersGrouped, syncTodayOrders } from './services/shopeeApi'
+import { getQrisSettlement, refreshQrisSettlement } from './services/qrisApi'
 import notificationSoundUrl from './assets/orderan_gofodd.mp3'
 import './styles.css'
 
@@ -26,6 +29,11 @@ export default function App() {
   const [soundEnabled, setSoundEnabled] = useState(() => localStorage.getItem('priorityOrderSound') !== 'disabled')
   const [newOrderIds, setNewOrderIds] = useState([])
   const [highlightedOrderIds, setHighlightedOrderIds] = useState([])
+  const [qris, setQris] = useState(null)
+  const [qrisLoading, setQrisLoading] = useState(true)
+  const [qrisRefreshing, setQrisRefreshing] = useState(false)
+  const [qrisError, setQrisError] = useState('')
+  const [qrisOpen, setQrisOpen] = useState(false)
   const soundEnabledRef = useRef(soundEnabled)
   const previousOrderIdsRef = useRef(new Set())
   const hasLoadedOrdersRef = useRef(false)
@@ -50,6 +58,32 @@ export default function App() {
       setError(err.message || 'Gagal mengambil data dashboard')
     } finally {
       setLoading(false)
+    }
+  }
+
+  async function loadQris() {
+    try {
+      setQrisError('')
+      const res = await getQrisSettlement()
+      setQris(res)
+      if (res?.error) setQrisError(res.error)
+    } catch (err) {
+      setQrisError(err.message || 'Gagal mengambil data QRIS')
+    } finally {
+      setQrisLoading(false)
+    }
+  }
+
+  async function handleQrisRefresh() {
+    try {
+      setQrisError('')
+      setQrisRefreshing(true)
+      const res = await refreshQrisSettlement()
+      setQris(res)
+    } catch (err) {
+      setQrisError(err.message || 'Gagal refresh data QRIS')
+    } finally {
+      setQrisRefreshing(false)
     }
   }
 
@@ -179,9 +213,16 @@ export default function App() {
   }
 
   useEffect(() => {
+    loadQris()
+    // Pull the backend's cached settlement hourly (backend re-scrapes BCA every hour).
+    const qrisTimer = setInterval(loadQris, 60 * 60 * 1000)
+    return () => clearInterval(qrisTimer)
+  }, [])
+
+  useEffect(() => {
     loadDashboard()
     const timer = setInterval(loadDashboard, 60_000)
-    
+
     return () => {
       clearInterval(timer)
       if (newOrderTimeoutRef.current) {
@@ -218,10 +259,16 @@ export default function App() {
         </div>
       )}
 
-      <section className="summary-grid">
+      <section className="summary-grid summary-grid--with-qris">
         {summary.map((item) => (
           <SummaryCard key={item.type} {...item} />
         ))}
+        <QrisSettlementCard
+          total={qris?.total ?? 0}
+          count={qris?.count ?? 0}
+          loading={qrisLoading}
+          onOpen={() => setQrisOpen(true)}
+        />
       </section>
 
       <div className="monitoring-line">
@@ -265,6 +312,16 @@ export default function App() {
           highlightedOrderIds={highlightedOrderIdSet}
         />
       </section>
+
+      <QrisSettlementPopup
+        open={qrisOpen}
+        onClose={() => setQrisOpen(false)}
+        data={qris}
+        loading={qrisLoading}
+        refreshing={qrisRefreshing}
+        error={qrisError}
+        onRefresh={handleQrisRefresh}
+      />
     </main>
   )
 }

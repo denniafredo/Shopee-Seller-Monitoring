@@ -22,6 +22,11 @@ export function getDisplayImage(item) {
   return item.variantImageUrl || item.productImageUrl || item.imageUrl || null
 }
 
+export function formatRupiah(value) {
+  const n = Number(value) || 0
+  return 'Rp ' + n.toLocaleString('id-ID')
+}
+
 export function getStatusLabel(status) {
   const map = {
     BARU: 'Baru',

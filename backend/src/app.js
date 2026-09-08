@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import shopeeOrderRoutes from './routes/shopeeOrder.routes.js'
+import bcaQrisRoutes from './routes/bcaQris.routes.js'
 
 const app = express()
 
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/shopee', shopeeOrderRoutes)
+app.use('/api/qris', bcaQrisRoutes)
 
 app.use((req, res) => {
   res.status(404).json({
