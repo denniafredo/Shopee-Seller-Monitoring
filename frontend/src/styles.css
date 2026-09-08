@@ -830,7 +830,7 @@ body {
   color: #fff;
 }
 
-.qris-card__amount {
+.qris-card .qris-card__amount {
   margin: 2px 0 0;
   font-size: 34px;
   line-height: 1.05;

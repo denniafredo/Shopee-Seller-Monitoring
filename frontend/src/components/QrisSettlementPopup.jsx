@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { QrCode, X, RefreshCw, Search, CheckCircle2, ListFilter } from 'lucide-react'
+import { QrCode, X, RefreshCw, CheckCircle2 } from 'lucide-react'
 import { formatRupiah } from '../utils/format'
 
 export default function QrisSettlementPopup({
@@ -93,14 +93,6 @@ export default function QrisSettlementPopup({
         </div>
 
         <footer className="qris-panel__footer">
-          <div className="qris-panel__footer-row">
-            <button type="button" className="qris-btn qris-btn--ghost">
-              <ListFilter size={15} /> QR Statis
-            </button>
-            <button type="button" className="qris-btn qris-btn--ghost">
-              <Search size={15} /> Cek RRN
-            </button>
-          </div>
           <button type="button" className="qris-btn qris-btn--primary" onClick={onRefresh} disabled={refreshing}>
             <RefreshCw size={16} className={refreshing ? 'spin' : ''} />
             {refreshing ? 'Mengambil data…' : 'Lihat Semua Mutasi QRIS (Hari Ini)'}
