@@ -293,8 +293,7 @@ export async function fetchQrisSettlement() {
     }, 25_000);
     await sleep(1500);
 
-    const innerText = await page.evaluate(() => document.body?.innerText || '');
-    const parsed = parseSettlementText(innerText);
+    const parsed = await loadAllTransactions(page);
 
     // Always keep a debug snapshot of the latest scrape so the parser can be
     // calibrated against the real page without logging in again.
@@ -311,6 +310,64 @@ export async function fetchQrisSettlement() {
     // Free RAM between scrapes on small instances (session persists on disk).
     if (!KEEP_BROWSER) await closeBrowser();
   }
+}
+
+/**
+ * The BCA list lazy-loads / infinite-scrolls, so a single read can catch it
+ * mid-render (fewer rows than the header count). Scroll every scrollable
+ * container to the bottom repeatedly, accumulating unique transactions (keyed
+ * by RRN) until we have as many as the header says, or things go stable.
+ */
+async function loadAllTransactions(page) {
+  const seen = new Map();
+  let headerTotal = null;
+  let headerCount = null;
+  const deadline = Date.now() + 20_000;
+  let lastSize = -1;
+  let stableTicks = 0;
+
+  const scrollToBottom = () =>
+    page.evaluate(() => {
+      const scrollables = [document.scrollingElement, ...document.querySelectorAll('div,main,section,ul')]
+        .filter((el) => el && el.scrollHeight > el.clientHeight + 20);
+      for (const el of scrollables) el.scrollTop = el.scrollHeight;
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+
+  while (Date.now() < deadline) {
+    await scrollToBottom().catch(() => {});
+    await sleep(1200);
+
+    const text = await page.evaluate(() => document.body?.innerText || '');
+    const parsed = parseSettlementText(text);
+    if (parsed.total) headerTotal = parsed.total;
+    if (Number.isFinite(parsed.count)) headerCount = parsed.count;
+    for (const tx of parsed.transactions) {
+      seen.set(tx.rrn || `norrn-${seen.size}`, tx);
+    }
+
+    if (headerCount && seen.size >= headerCount) break;
+
+    if (seen.size === lastSize) {
+      if (++stableTicks >= 3) break; // no growth after scrolling -> give up
+    } else {
+      stableTicks = 0;
+      lastSize = seen.size;
+    }
+  }
+
+  // Prefer page order (newest first). Sort by time desc when available.
+  const toMin = (t) => {
+    const m = /^(\d{1,2}):(\d{2})$/.exec(t || '');
+    return m ? Number(m[1]) * 60 + Number(m[2]) : -1;
+  };
+  const transactions = [...seen.values()].sort((a, b) => toMin(b.time) - toMin(a.time));
+
+  return {
+    total: headerTotal ?? transactions.reduce((s, t) => s + t.amount, 0),
+    count: headerCount ?? transactions.length,
+    transactions
+  };
 }
 
 /* ----------------------------- text parsing ------------------------------ */
