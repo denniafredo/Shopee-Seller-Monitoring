@@ -312,17 +312,32 @@ async function clickLoginButton(page) {
 export async function fetchQrisSettlement() {
   await assertDiskSpace(); // never launch Chrome when disk is low
   const browser = await getBrowser();
-  const page = await browser.newPage();
-  await page.setExtraHTTPHeaders({ 'Accept-Language': 'id-ID,id;q=0.9' });
+
+  // With ALWAYS_FRESH_LOGIN, run in an isolated (incognito) browser context that
+  // has NO persisted cookies/localStorage/IndexedDB — so a stale token from a
+  // previous day can never linger and silently return empty data. The context
+  // is discarded after each scrape. Otherwise use the persisted default context.
+  let context = null;
+  if (ALWAYS_FRESH_LOGIN) {
+    context = await (browser.createBrowserContext
+      ? browser.createBrowserContext()
+      : browser.createIncognitoBrowserContext());
+  }
+  const page = context ? await context.newPage() : await browser.newPage();
 
   try {
-    await ensureLoggedIn(page, { force: ALWAYS_FRESH_LOGIN });
+    await page.setExtraHTTPHeaders({ 'Accept-Language': 'id-ID,id;q=0.9' });
+    await page.emulateTimezone('Asia/Jakarta').catch(() => {});
+
+    // Isolated context starts empty -> ensureLoggedIn sees the login form and
+    // authenticates fresh. On the persisted context, force a clear when asked.
+    await ensureLoggedIn(page, { force: !context && ALWAYS_FRESH_LOGIN });
     let parsed = await scrapeHomePage(page);
 
-    // When reusing a session, an empty result can mean a stale token (the shell
-    // renders but the transaction API returns nothing). Force a fresh login and
-    // retry once. With ALWAYS_FRESH_LOGIN we already have a new token, so an
-    // empty result there means today genuinely has no transactions.
+    // When reusing the persisted session, an empty result can mean a stale token
+    // (shell renders but the transaction API returns nothing). Re-login fresh and
+    // retry once. In an isolated context we already logged in fresh, so an empty
+    // result there means today genuinely has no transactions.
     if (!parsed.transactions.length && !ALWAYS_FRESH_LOGIN) {
       await ensureLoggedIn(page, { force: true });
       parsed = await scrapeHomePage(page);
@@ -340,6 +355,7 @@ export async function fetchQrisSettlement() {
     };
   } finally {
     await page.close().catch(() => {});
+    if (context) await context.close().catch(() => {}); // discard isolated storage
     // Free RAM between scrapes on small instances (session persists on disk).
     if (!KEEP_BROWSER) await closeBrowser();
   }
