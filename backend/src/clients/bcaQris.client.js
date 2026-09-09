@@ -169,7 +169,33 @@ function isLoginPage(url) {
   return /\/login\b/.test(url || '');
 }
 
-async function ensureLoggedIn(page) {
+// Clear cookies + local/session storage so a stale token can't linger. The BCA
+// SPA keeps its access_token in storage; when it expires the page still renders
+// the shell but the transaction API returns empty — so a plain reload isn't
+// enough, we must wipe and re-authenticate to force a fresh token.
+async function clearSession(page) {
+  try {
+    const client = await page.target().createCDPSession();
+    await client.send('Network.clearBrowserCookies');
+  } catch {
+    // ignore
+  }
+  try {
+    await page.goto(HOME_URL, { waitUntil: 'domcontentloaded', timeout: 60_000 }).catch(() => {});
+    await page.evaluate(() => {
+      try {
+        localStorage.clear();
+        sessionStorage.clear();
+      } catch {
+        // storage may be inaccessible
+      }
+    });
+  } catch {
+    // ignore
+  }
+}
+
+async function ensureLoggedIn(page, { force = false } = {}) {
   const username = process.env.MERCH_USERNAME;
   const password = process.env.MERCH_PASSWORD;
 
@@ -177,12 +203,16 @@ async function ensureLoggedIn(page) {
     throw new Error('MERCH_USERNAME / MERCH_PASSWORD are not set in backend/.env');
   }
 
-  // If our persisted session is still valid, home loads without a login form.
-  await page.goto(HOME_URL, { waitUntil: 'networkidle2', timeout: 60_000 }).catch(() => {});
-  await sleep(1500);
+  if (force) {
+    await clearSession(page); // wipe stale session, then log in fresh below
+  } else {
+    // If our persisted session is still valid, home loads without a login form.
+    await page.goto(HOME_URL, { waitUntil: 'networkidle2', timeout: 60_000 }).catch(() => {});
+    await sleep(1500);
 
-  if (!isLoginPage(page.url()) && (await findLoginInputs(page)) === null) {
-    return; // already authenticated via persisted session
+    if (!isLoginPage(page.url()) && (await findLoginInputs(page)) === null) {
+      return; // already authenticated via persisted session
+    }
   }
 
   // Perform a fresh login.
@@ -282,21 +312,18 @@ export async function fetchQrisSettlement() {
 
   try {
     await ensureLoggedIn(page);
+    let parsed = await scrapeHomePage(page);
 
-    const homeTarget = MID ? `${HOME_URL}?mid=${encodeURIComponent(MID)}` : HOME_URL;
-    await page.goto(homeTarget, { waitUntil: 'networkidle2', timeout: 60_000 });
+    // Empty result can mean a stale session token: the shell renders but the
+    // transaction API returns nothing. Force a fresh login (new token) and try
+    // once more. If it's still empty, today genuinely has no transactions.
+    if (!parsed.transactions.length) {
+      await ensureLoggedIn(page, { force: true });
+      parsed = await scrapeHomePage(page);
+    }
 
-    // Give the transaction list time to decrypt + render.
-    await waitFor(async () => {
-      const txt = await page.evaluate(() => document.body?.innerText || '');
-      return /RRN|NMID|Rp\s?\d/i.test(txt);
-    }, 25_000);
-    await sleep(1500);
-
-    const parsed = await loadAllTransactions(page);
-
-    // Always keep a debug snapshot of the latest scrape so the parser can be
-    // calibrated against the real page without logging in again.
+    // Keep a debug snapshot of the latest scrape so the parser can be calibrated
+    // against the real page without logging in again.
     await saveDebug(page, 'settlement');
 
     return {
@@ -310,6 +337,21 @@ export async function fetchQrisSettlement() {
     // Free RAM between scrapes on small instances (session persists on disk).
     if (!KEEP_BROWSER) await closeBrowser();
   }
+}
+
+// Navigate to the merchant home for the configured MID and read today's list.
+async function scrapeHomePage(page) {
+  const homeTarget = MID ? `${HOME_URL}?mid=${encodeURIComponent(MID)}` : HOME_URL;
+  await page.goto(homeTarget, { waitUntil: 'networkidle2', timeout: 60_000 });
+
+  // Wait until the list area has rendered (a transaction, or the empty-state).
+  await waitFor(async () => {
+    const txt = await page.evaluate(() => document.body?.innerText || '');
+    return /RRN|NMID|Transaksi tidak ada|TOTAL TRANSAKSI/i.test(txt);
+  }, 25_000);
+  await sleep(1500);
+
+  return loadAllTransactions(page);
 }
 
 /**
