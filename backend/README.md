@@ -217,8 +217,9 @@ Lalu di `.env` EC2 (pakai path hasil `find` di atas):
 ```env
 PUPPETEER_EXECUTABLE_PATH=/home/ubuntu/.cache/puppeteer/chrome/linux-XXX/chrome-linux64/chrome
 QRIS_HEADLESS=true
-QRIS_KEEP_BROWSER=false     # tutup Chrome tiap selesai scrape -> hemat RAM
-QRIS_MIN_FREE_DISK_MB=800   # skip scrape kalau sisa disk < 800 MB (0 = matikan)
+QRIS_KEEP_BROWSER=false        # tutup Chrome tiap selesai scrape -> hemat RAM
+QRIS_MIN_FREE_DISK_MB=800      # skip scrape kalau sisa disk < 800 MB (0 = matikan)
+QRIS_ALWAYS_FRESH_LOGIN=true   # login ulang tiap scrape (aman dari token basi)
 ```
 
 Catatan resource:

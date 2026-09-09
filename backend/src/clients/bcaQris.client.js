@@ -25,6 +25,11 @@ const HEADLESS = String(process.env.QRIS_HEADLESS ?? 'true').toLowerCase() !== '
 // dir, so relaunching still reuses cookies (no re-login). Set true on a roomy
 // box / for fast local dev.
 const KEEP_BROWSER = String(process.env.QRIS_KEEP_BROWSER ?? 'false').toLowerCase() === 'true';
+// Log in fresh (wipe cookies + storage, re-authenticate) on every scrape so a
+// stale token can never silently return empty data. Safe for a dedicated,
+// no-OTP account. Set false to reuse the persisted session (faster) and only
+// re-login when a scrape comes back empty.
+const ALWAYS_FRESH_LOGIN = String(process.env.QRIS_ALWAYS_FRESH_LOGIN ?? 'true').toLowerCase() !== 'false';
 // Disk guard: refuse to launch Chrome when free space on this filesystem is low,
 // so the scraper can never be the thing that fills a nearly-full disk (Chrome
 // writes its profile + /tmp during a run). 0 disables the check.
@@ -311,13 +316,14 @@ export async function fetchQrisSettlement() {
   await page.setExtraHTTPHeaders({ 'Accept-Language': 'id-ID,id;q=0.9' });
 
   try {
-    await ensureLoggedIn(page);
+    await ensureLoggedIn(page, { force: ALWAYS_FRESH_LOGIN });
     let parsed = await scrapeHomePage(page);
 
-    // Empty result can mean a stale session token: the shell renders but the
-    // transaction API returns nothing. Force a fresh login (new token) and try
-    // once more. If it's still empty, today genuinely has no transactions.
-    if (!parsed.transactions.length) {
+    // When reusing a session, an empty result can mean a stale token (the shell
+    // renders but the transaction API returns nothing). Force a fresh login and
+    // retry once. With ALWAYS_FRESH_LOGIN we already have a new token, so an
+    // empty result there means today genuinely has no transactions.
+    if (!parsed.transactions.length && !ALWAYS_FRESH_LOGIN) {
       await ensureLoggedIn(page, { force: true });
       parsed = await scrapeHomePage(page);
     }
