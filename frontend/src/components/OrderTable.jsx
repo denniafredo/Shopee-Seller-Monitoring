@@ -1,4 +1,4 @@
-import { OrderIcon, MoneyIcon } from './OrderIcons'
+import { OrderIcon, MoneyIcon, NoteIcon } from './OrderIcons'
 import ProductImage from './ProductImage'
 import StatusBadge from './StatusBadge'
 import { formatVariantText, getDisplayImage, normalizeTime } from '../utils/format'
@@ -38,6 +38,7 @@ export default function OrderTable({ title, tone = 'standard', orders = [], high
 function OrderRow({ order, tone, isNew = false }) {
   const items = order.items || []
   const shippingType = order.shippingType ? order.shippingType.toLowerCase() : tone
+  const buyerNote = typeof order.buyerNote === 'string' ? order.buyerNote.trim() : ''
 
   return (
     <div className={`order-row order-row--${shippingType} ${isNew ? 'order-row--new' : ''}`}>
@@ -74,6 +75,16 @@ function OrderRow({ order, tone, isNew = false }) {
                 </p>
 
                 <p className="item-row__variant">{formatVariantText(item)}</p>
+
+                {buyerNote && (
+                  <p className="item-row__note" title={buyerNote}>
+                    <NoteIcon size={18} />
+                    <span>
+                      <strong>Catatan:</strong> {buyerNote}
+                    </span>
+                  </p>
+                )}
+
                 {(item.modelSku || item.sku) && <p className="item-row__sku">SKU: {item.modelSku || item.sku}</p>}
               </div>
               <span className="item-row__qty">{item.qty}</span>

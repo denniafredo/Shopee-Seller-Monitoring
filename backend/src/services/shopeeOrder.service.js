@@ -307,6 +307,7 @@ function getOptionalFields() {
   return [
     'buyer_user_id',
     'buyer_username',
+    'message_to_seller',
     'recipient_address',
     'item_list',
     'package_list',
@@ -333,6 +334,7 @@ function normalizeShopeeOrder(order) {
   return {
     orderNo: order.order_sn,
     buyerName: order.buyer_username || null,
+    buyerNote: normalizeBuyerNote(order.message_to_seller),
     shippingType: mapShippingType(order.shipping_carrier),
     courierName: order.shipping_carrier || null,
     orderTime: orderDate.toISOString(),
@@ -368,6 +370,14 @@ function normalizeShopeeOrder(order) {
   };
 }
 
+function normalizeBuyerNote(note) {
+  if (!note) return null;
+
+  const cleaned = String(note).replace(/\s+/g, ' ').trim();
+
+  return cleaned || null;
+}
+
 function getShopeeProductImageUrl(item) {
   return (
     item.image_info?.image_url ||
@@ -401,6 +411,7 @@ function formatOrderForTable(order) {
     shipByDate: order.shipByDate,
     shipByTimestamp: order.shipByTimestamp,
     shippingDeadlineText: order.shippingDeadlineText,
+    buyerNote: order.buyerNote,
     items: order.items.map((item) => ({
       productName: item.productName,
       variantName: item.variantName,

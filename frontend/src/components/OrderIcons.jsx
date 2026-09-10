@@ -28,6 +28,29 @@ export function OrderIcon({ size = 22 }) {
   )
 }
 
+export function NoteIcon({ size = 18 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke={STROKE}
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {/* sticky note */}
+      <path d="M4 3h24v18l-7 8H4z" fill="#ffe6a7" />
+      {/* folded corner */}
+      <path d="M28 21h-7v8" fill="#f7cf72" />
+      {/* text lines */}
+      <path d="M9 10h14M9 15h14M9 20h8" strokeWidth="2" />
+    </svg>
+  )
+}
+
 export function MoneyIcon({ size = 22 }) {
   return (
     <svg
