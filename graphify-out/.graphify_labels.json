@@ -1,0 +1,8 @@
+{
+  "0": "shopeeOrder.service.js",
+  "1": "OrderTable.jsx",
+  "2": "normalizeShopeeOrder",
+  "3": "getShopeeOrdersWithDetails",
+  "4": "getPendingOrdersForDisplay",
+  "5": "OrderIcons.jsx"
+}
