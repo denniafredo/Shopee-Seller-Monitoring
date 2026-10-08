@@ -39,6 +39,7 @@ function OrderRow({ order, tone, isNew = false }) {
   const items = order.items || []
   const shippingType = order.shippingType ? order.shippingType.toLowerCase() : tone
   const buyerNote = typeof order.buyerNote === 'string' ? order.buyerNote.trim() : ''
+  const sellerNote = typeof order.sellerNote === 'string' ? order.sellerNote.trim() : ''
 
   return (
     <div className={`order-row order-row--${shippingType} ${isNew ? 'order-row--new' : ''}`}>
@@ -80,7 +81,16 @@ function OrderRow({ order, tone, isNew = false }) {
                   <p className="item-row__note" title={buyerNote}>
                     <NoteIcon size={18} />
                     <span>
-                      <strong>Catatan:</strong> {buyerNote}
+                      <strong>Catatan Pembeli:</strong> {buyerNote}
+                    </span>
+                  </p>
+                )}
+
+                {sellerNote && (
+                  <p className="item-row__note item-row__note--seller" title={sellerNote}>
+                    <NoteIcon size={18} fill="#d6e4ff" foldFill="#a9c4f5" />
+                    <span>
+                      <strong>Catatan Penjual:</strong> {sellerNote}
                     </span>
                   </p>
                 )}

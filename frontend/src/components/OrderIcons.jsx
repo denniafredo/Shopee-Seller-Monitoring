@@ -28,7 +28,7 @@ export function OrderIcon({ size = 22 }) {
   )
 }
 
-export function NoteIcon({ size = 18 }) {
+export function NoteIcon({ size = 18, fill = '#ffe6a7', foldFill = '#f7cf72' }) {
   return (
     <svg
       width={size}
@@ -42,9 +42,9 @@ export function NoteIcon({ size = 18 }) {
       aria-hidden="true"
     >
       {/* sticky note */}
-      <path d="M4 3h24v18l-7 8H4z" fill="#ffe6a7" />
+      <path d="M4 3h24v18l-7 8H4z" fill={fill} />
       {/* folded corner */}
-      <path d="M28 21h-7v8" fill="#f7cf72" />
+      <path d="M28 21h-7v8" fill={foldFill} />
       {/* text lines */}
       <path d="M9 10h14M9 15h14M9 20h8" strokeWidth="2" />
     </svg>

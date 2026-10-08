@@ -478,6 +478,12 @@ body {
   font-weight: 800;
 }
 
+.item-row__note--seller {
+  border-color: #5b8def;
+  background: #eef4ff;
+  color: #1f4fa3;
+}
+
 .item-row__sku {
   margin: 0;
   color: #8d817d;
