@@ -13,7 +13,55 @@
       "file_type": "code",
       "norm_label": "refreshshopeetokenfromenv()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L109"
+      "source_location": "L110"
+    },
+    {
+      "id": "frontend_src_components_customerstatusbadge_customerstatusbadge",
+      "label": "CustomerStatusBadge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "customerstatusbadge()",
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "frontend_src_components_ordericons_moneyicon",
+      "label": "MoneyIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "moneyicon()",
+      "source_file": "frontend/src/components/OrderIcons.jsx",
+      "source_location": "L54"
+    },
+    {
+      "id": "frontend_src_components_ordericons_noteicon",
+      "label": "NoteIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "noteicon()",
+      "source_file": "frontend/src/components/OrderIcons.jsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "frontend_src_components_ordericons_ordericon",
+      "label": "OrderIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "ordericon()",
+      "source_file": "frontend/src/components/OrderIcons.jsx",
+      "source_location": "L3"
     },
     {
       "id": "frontend_src_components_ordertable_orderrow",
@@ -25,7 +73,7 @@
       "file_type": "code",
       "norm_label": "orderrow()",
       "source_file": "frontend/src/components/OrderTable.jsx",
-      "source_location": "L38"
+      "source_location": "L39"
     },
     {
       "id": "frontend_src_components_ordertable_ordertable",
@@ -37,7 +85,163 @@
       "file_type": "code",
       "norm_label": "ordertable()",
       "source_file": "frontend/src/components/OrderTable.jsx",
-      "source_location": "L6"
+      "source_location": "L7"
+    },
+    {
+      "id": "frontend_src_utils_format_formatindonesiandate",
+      "label": "formatIndonesianDate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "formatindonesiandate()",
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_utils_format_formatrupiah",
+      "label": "formatRupiah()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "formatrupiah()",
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L54"
+    },
+    {
+      "id": "frontend_src_utils_format_formatshortdate",
+      "label": "formatShortDate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "formatshortdate()",
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L43"
+    },
+    {
+      "id": "frontend_src_utils_format_formattimeago",
+      "label": "formatTimeAgo()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "formattimeago()",
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L25"
+    },
+    {
+      "id": "frontend_src_utils_format_formatvarianttext",
+      "label": "formatVariantText()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "formatvarianttext()",
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L16"
+    },
+    {
+      "id": "frontend_src_utils_format_getdisplayimage",
+      "label": "getDisplayImage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "getdisplayimage()",
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L21"
+    },
+    {
+      "id": "frontend_src_utils_format_getstatuslabel",
+      "label": "getStatusLabel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "getstatuslabel()",
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L59"
+    },
+    {
+      "id": "frontend_src_utils_format_normalizetime",
+      "label": "normalizeTime()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "normalizetime()",
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L11"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_gethistoryfilepath",
+      "label": "getHistoryFilePath()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "rememberOrders",
+      "file_type": "code",
+      "norm_label": "gethistoryfilepath()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L296"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_loadhistoryfile",
+      "label": "loadHistoryFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "rememberOrders",
+      "file_type": "code",
+      "norm_label": "loadhistoryfile()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L249"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_rememberorders",
+      "label": "rememberOrders()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "rememberOrders",
+      "file_type": "code",
+      "norm_label": "rememberorders()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L63"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_savehistoryfile",
+      "label": "saveHistoryFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "rememberOrders",
+      "file_type": "code",
+      "norm_label": "savehistoryfile()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L279"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_setorderentry",
+      "label": "setOrderEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "rememberOrders",
+      "file_type": "code",
+      "norm_label": "setorderentry()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L321"
     },
     {
       "id": "backend_src_services_shopeeorder_service_buildrecipientaddress",
@@ -49,7 +253,7 @@
       "file_type": "code",
       "norm_label": "buildrecipientaddress()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L453"
+      "source_location": "L459"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getshippingdeadlinetext",
@@ -61,7 +265,7 @@
       "file_type": "code",
       "norm_label": "getshippingdeadlinetext()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L494"
+      "source_location": "L471"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getshopeeproductimageurl",
@@ -73,7 +277,7 @@
       "file_type": "code",
       "norm_label": "getshopeeproductimageurl()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L383"
+      "source_location": "L388"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getshopeevariantimageurl",
@@ -85,7 +289,7 @@
       "file_type": "code",
       "norm_label": "getshopeevariantimageurl()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L394"
+      "source_location": "L399"
     },
     {
       "id": "backend_src_services_shopeeorder_service_mapshippingtype",
@@ -97,7 +301,7 @@
       "file_type": "code",
       "norm_label": "mapshippingtype()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L443"
+      "source_location": "L449"
     },
     {
       "id": "backend_src_services_shopeeorder_service_mapshopeestatus",
@@ -109,7 +313,7 @@
       "file_type": "code",
       "norm_label": "mapshopeestatus()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L427"
+      "source_location": "L433"
     },
     {
       "id": "backend_src_services_shopeeorder_service_normalizenote",
@@ -121,7 +325,7 @@
       "file_type": "code",
       "norm_label": "normalizenote()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L375"
+      "source_location": "L380"
     },
     {
       "id": "backend_src_services_shopeeorder_service_normalizeshopeeorder",
@@ -133,31 +337,7 @@
       "file_type": "code",
       "norm_label": "normalizeshopeeorder()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L328"
-    },
-    {
-      "id": "backend_src_services_shopeeorder_service_buildtimeranges",
-      "label": "buildTimeRanges()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "getShopeeOrdersWithDetails",
-      "file_type": "code",
-      "norm_label": "buildtimeranges()",
-      "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L475"
-    },
-    {
-      "id": "backend_src_services_shopeeorder_service_chunkarray",
-      "label": "chunkArray()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "getShopeeOrdersWithDetails",
-      "file_type": "code",
-      "norm_label": "chunkarray()",
-      "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L465"
+      "source_location": "L331"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getoptionalfields",
@@ -169,7 +349,7 @@
       "file_type": "code",
       "norm_label": "getoptionalfields()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L306"
+      "source_location": "L309"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getorderdetail",
@@ -181,7 +361,7 @@
       "file_type": "code",
       "norm_label": "getorderdetail()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L66"
+      "source_location": "L67"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getshopeeorderswithdetails",
@@ -193,7 +373,7 @@
       "file_type": "code",
       "norm_label": "getshopeeorderswithdetails()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L132"
+      "source_location": "L133"
     },
     {
       "id": "backend_src_services_shopeeorder_service_syncshopeeordersfromapi",
@@ -205,7 +385,7 @@
       "file_type": "code",
       "norm_label": "syncshopeeordersfromapi()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L97"
+      "source_location": "L98"
     },
     {
       "id": "backend_src_services_shopeeorder_service_formatorderfortable",
@@ -217,7 +397,7 @@
       "file_type": "code",
       "norm_label": "formatorderfortable()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L404"
+      "source_location": "L409"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getdashboardsummary",
@@ -229,7 +409,7 @@
       "file_type": "code",
       "norm_label": "getdashboardsummary()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L10"
+      "source_location": "L11"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getpendingorders",
@@ -241,7 +421,7 @@
       "file_type": "code",
       "norm_label": "getpendingorders()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L46"
+      "source_location": "L47"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getpendingordersfordisplay",
@@ -253,7 +433,7 @@
       "file_type": "code",
       "norm_label": "getpendingordersfordisplay()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L260"
+      "source_location": "L261"
     },
     {
       "id": "backend_src_services_shopeeorder_service_getpendingordersgrouped",
@@ -265,43 +445,223 @@
       "file_type": "code",
       "norm_label": "getpendingordersgrouped()",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L226"
+      "source_location": "L227"
     },
     {
-      "id": "frontend_src_components_ordericons_moneyicon",
-      "label": "MoneyIcon()",
+      "id": "backend_src_services_customerhistory_service_callshopee",
+      "label": "callShopee()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "OrderIcons.jsx",
+      "community": 7,
+      "community_name": "syncOrderIndex",
       "file_type": "code",
-      "norm_label": "moneyicon()",
-      "source_file": "frontend/src/components/OrderIcons.jsx",
-      "source_location": "L54"
+      "norm_label": "callshopee()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L378"
     },
     {
-      "id": "frontend_src_components_ordericons_noteicon",
-      "label": "NoteIcon()",
+      "id": "backend_src_services_customerhistory_service_normalizereturn",
+      "label": "normalizeReturn()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "OrderIcons.jsx",
+      "community": 7,
+      "community_name": "syncOrderIndex",
       "file_type": "code",
-      "norm_label": "noteicon()",
-      "source_file": "frontend/src/components/OrderIcons.jsx",
-      "source_location": "L31"
+      "norm_label": "normalizereturn()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L305"
     },
     {
-      "id": "frontend_src_components_ordericons_ordericon",
-      "label": "OrderIcon()",
+      "id": "backend_src_services_customerhistory_service_syncorderindex",
+      "label": "syncOrderIndex()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "OrderIcons.jsx",
+      "community": 7,
+      "community_name": "syncOrderIndex",
       "file_type": "code",
-      "norm_label": "ordericon()",
-      "source_file": "frontend/src/components/OrderIcons.jsx",
-      "source_location": "L3"
+      "norm_label": "syncorderindex()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L180"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_syncreturns",
+      "label": "syncReturns()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "syncOrderIndex",
+      "file_type": "code",
+      "norm_label": "syncreturns()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L231"
+    },
+    {
+      "id": "backend_src_utils_range_util_buildtimeranges",
+      "label": "buildTimeRanges()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "syncOrderIndex",
+      "file_type": "code",
+      "norm_label": "buildtimeranges()",
+      "source_file": "backend/src/utils/range.util.js",
+      "source_location": "L4"
+    },
+    {
+      "id": "backend_src_utils_range_util_chunkarray",
+      "label": "chunkArray()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "syncOrderIndex",
+      "file_type": "code",
+      "norm_label": "chunkarray()",
+      "source_file": "backend/src/utils/range.util.js",
+      "source_location": "L23"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_buildcustomerstatus",
+      "label": "buildCustomerStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "buildCustomerStatus",
+      "file_type": "code",
+      "norm_label": "buildcustomerstatus()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L96"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_findbuyeritems",
+      "label": "findBuyerItems()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "buildCustomerStatus",
+      "file_type": "code",
+      "norm_label": "findbuyeritems()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L359"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_getbuyerkeys",
+      "label": "getBuyerKeys()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "buildCustomerStatus",
+      "file_type": "code",
+      "norm_label": "getbuyerkeys()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L333"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_getreturnreasonlabel",
+      "label": "getReturnReasonLabel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "buildCustomerStatus",
+      "file_type": "code",
+      "norm_label": "getreturnreasonlabel()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L369"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_groupbybuyer",
+      "label": "groupByBuyer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "buildCustomerStatus",
+      "file_type": "code",
+      "norm_label": "groupbybuyer()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L346"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_withcustomerstatus",
+      "label": "withCustomerStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "buildCustomerStatus",
+      "file_type": "code",
+      "norm_label": "withcustomerstatus()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L78"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_gethistorydays",
+      "label": "getHistoryDays()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "refreshCustomerHistory",
+      "file_type": "code",
+      "norm_label": "gethistorydays()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L390"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_getrefreshms",
+      "label": "getRefreshMs()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "refreshCustomerHistory",
+      "file_type": "code",
+      "norm_label": "getrefreshms()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L399"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_isenabled",
+      "label": "isEnabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "refreshCustomerHistory",
+      "file_type": "code",
+      "norm_label": "isenabled()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L395"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_refreshcustomerhistory",
+      "label": "refreshCustomerHistory()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "refreshCustomerHistory",
+      "file_type": "code",
+      "norm_label": "refreshcustomerhistory()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L148"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_refreshifdue",
+      "label": "refreshIfDue()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "refreshCustomerHistory",
+      "file_type": "code",
+      "norm_label": "refreshifdue()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L135"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_startcustomerhistoryautorefresh",
+      "label": "startCustomerHistoryAutoRefresh()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "refreshCustomerHistory",
+      "file_type": "code",
+      "norm_label": "startcustomerhistoryautorefresh()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L51"
     },
     {
       "id": "backend_src_services_shopeeorder_service",
@@ -312,6 +672,28 @@
       "file_type": "code",
       "norm_label": "shopeeorder.service.js",
       "source_file": "backend/src/services/shopeeOrder.service.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_components_customerstatusbadge",
+      "label": "CustomerStatusBadge.jsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "customerstatusbadge.jsx",
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "frontend_src_components_ordericons",
+      "label": "OrderIcons.jsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "ordericons.jsx",
+      "source_file": "frontend/src/components/OrderIcons.jsx",
       "source_location": "L1"
     },
     {
@@ -326,30 +708,174 @@
       "source_location": "L1"
     },
     {
-      "id": "frontend_src_components_ordericons",
-      "label": "OrderIcons.jsx",
+      "id": "frontend_src_utils_format",
+      "label": "format.js",
       "_origin": "ast",
-      "community": 5,
-      "community_name": "OrderIcons.jsx",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
       "file_type": "code",
-      "norm_label": "ordericons.jsx",
-      "source_file": "frontend/src/components/OrderIcons.jsx",
+      "norm_label": "format.js",
+      "source_file": "frontend/src/utils/format.js",
       "source_location": "L1"
     },
     {
-      "id": "backend_src_clients_shopee_client",
-      "label": "backend_src_clients_shopee_client",
-      "community": 0,
-      "community_name": "shopeeOrder.service.js",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "backend_src_clients_shopee_client",
-      "source_file": "",
-      "type": "external"
+      "id": "backend_src_constants_order_constant",
+      "label": "order.constant.js",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "order.constant.js",
+      "file_type": "code",
+      "norm_label": "order.constant.js",
+      "source_file": "backend/src/constants/order.constant.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_constants_order_constant_customer_status",
+      "label": "CUSTOMER_STATUS",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "order.constant.js",
+      "file_type": "code",
+      "norm_label": "customer_status",
+      "source_file": "backend/src/constants/order.constant.js",
+      "source_location": "L18"
+    },
+    {
+      "id": "backend_src_constants_order_constant_order_status",
+      "label": "ORDER_STATUS",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "order.constant.js",
+      "file_type": "code",
+      "norm_label": "order_status",
+      "source_file": "backend/src/constants/order.constant.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "backend_src_constants_order_constant_pending_statuses",
+      "label": "PENDING_STATUSES",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "order.constant.js",
+      "file_type": "code",
+      "norm_label": "pending_statuses",
+      "source_file": "backend/src/constants/order.constant.js",
+      "source_location": "L24"
+    },
+    {
+      "id": "backend_src_constants_order_constant_shipping_type",
+      "label": "SHIPPING_TYPE",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "order.constant.js",
+      "file_type": "code",
+      "norm_label": "shipping_type",
+      "source_file": "backend/src/constants/order.constant.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service",
+      "label": "customerHistory.service.js",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "file_type": "code",
+      "norm_label": "customerhistory.service.js",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_data_dir",
+      "label": "DATA_DIR",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "file_type": "code",
+      "norm_label": "data_dir",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L14"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_ignored_order_statuses",
+      "label": "IGNORED_ORDER_STATUSES",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "file_type": "code",
+      "norm_label": "ignored_order_statuses",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L17"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_ignored_return_statuses",
+      "label": "IGNORED_RETURN_STATUSES",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "file_type": "code",
+      "norm_label": "ignored_return_statuses",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L18"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_orderindex",
+      "label": "orderIndex",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "file_type": "code",
+      "norm_label": "orderindex",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L38"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_return_reason_labels",
+      "label": "RETURN_REASON_LABELS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "file_type": "code",
+      "norm_label": "return_reason_labels",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L20"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_returnindex",
+      "label": "returnIndex",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "file_type": "code",
+      "norm_label": "returnindex",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L39"
+    },
+    {
+      "id": "backend_src_server",
+      "label": "server.js",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "server.js",
+      "file_type": "code",
+      "norm_label": "server.js",
+      "source_file": "backend/src/server.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_src_utils_range_util",
+      "label": "range.util.js",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "syncOrderIndex",
+      "file_type": "code",
+      "norm_label": "range.util.js",
+      "source_file": "backend/src/utils/range.util.js",
+      "source_location": "L1"
     },
     {
       "id": "backend_src_clients_shopee_client_getshopeecredential",
       "label": "backend_src_clients_shopee_client_getshopeecredential",
+      "_origin": "semantic",
       "community": 0,
       "community_name": "shopeeOrder.service.js",
       "external": true,
@@ -361,6 +887,7 @@
     {
       "id": "backend_src_clients_shopee_client_refreshaccesstoken",
       "label": "backend_src_clients_shopee_client_refreshaccesstoken",
+      "_origin": "semantic",
       "community": 0,
       "community_name": "shopeeOrder.service.js",
       "external": true,
@@ -372,6 +899,7 @@
     {
       "id": "backend_src_clients_shopee_client_shopeeget",
       "label": "backend_src_clients_shopee_client_shopeeget",
+      "_origin": "semantic",
       "community": 0,
       "community_name": "shopeeOrder.service.js",
       "external": true,
@@ -381,52 +909,9 @@
       "type": "external"
     },
     {
-      "id": "backend_src_constants_order_constant",
-      "label": "backend_src_constants_order_constant",
-      "community": 0,
-      "community_name": "shopeeOrder.service.js",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "backend_src_constants_order_constant",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "backend_src_constants_order_constant_order_status",
-      "label": "backend_src_constants_order_constant_order_status",
-      "community": 0,
-      "community_name": "shopeeOrder.service.js",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "backend_src_constants_order_constant_order_status",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "backend_src_constants_order_constant_pending_statuses",
-      "label": "backend_src_constants_order_constant_pending_statuses",
-      "community": 0,
-      "community_name": "shopeeOrder.service.js",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "backend_src_constants_order_constant_pending_statuses",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "backend_src_constants_order_constant_shipping_type",
-      "label": "backend_src_constants_order_constant_shipping_type",
-      "community": 0,
-      "community_name": "shopeeOrder.service.js",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "backend_src_constants_order_constant_shipping_type",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "backend_src_utils_date_util",
       "label": "backend_src_utils_date_util",
+      "_origin": "semantic",
       "community": 0,
       "community_name": "shopeeOrder.service.js",
       "external": true,
@@ -438,6 +923,7 @@
     {
       "id": "backend_src_utils_date_util_formattimewib",
       "label": "backend_src_utils_date_util_formattimewib",
+      "_origin": "semantic",
       "community": 0,
       "community_name": "shopeeOrder.service.js",
       "external": true,
@@ -449,6 +935,7 @@
     {
       "id": "backend_src_utils_date_util_gettodayunixrangewib",
       "label": "backend_src_utils_date_util_gettodayunixrangewib",
+      "_origin": "semantic",
       "community": 0,
       "community_name": "shopeeOrder.service.js",
       "external": true,
@@ -460,6 +947,7 @@
     {
       "id": "backend_src_utils_shopeetokenstore",
       "label": "backend_src_utils_shopeetokenstore",
+      "_origin": "semantic",
       "community": 0,
       "community_name": "shopeeOrder.service.js",
       "external": true,
@@ -471,6 +959,7 @@
     {
       "id": "backend_src_utils_shopeetokenstore_getshopeetokens",
       "label": "backend_src_utils_shopeetokenstore_getshopeetokens",
+      "_origin": "semantic",
       "community": 0,
       "community_name": "shopeeOrder.service.js",
       "external": true,
@@ -482,6 +971,7 @@
     {
       "id": "backend_src_utils_shopeetokenstore_persistshopeetokens",
       "label": "backend_src_utils_shopeetokenstore_persistshopeetokens",
+      "_origin": "semantic",
       "community": 0,
       "community_name": "shopeeOrder.service.js",
       "external": true,
@@ -493,6 +983,7 @@
     {
       "id": "frontend_src_components_productimage",
       "label": "frontend_src_components_productimage",
+      "_origin": "semantic",
       "community": 1,
       "community_name": "OrderTable.jsx",
       "external": true,
@@ -504,6 +995,7 @@
     {
       "id": "frontend_src_components_statusbadge",
       "label": "frontend_src_components_statusbadge",
+      "_origin": "semantic",
       "community": 1,
       "community_name": "OrderTable.jsx",
       "external": true,
@@ -513,51 +1005,442 @@
       "type": "external"
     },
     {
-      "id": "frontend_src_utils_format",
-      "label": "frontend_src_utils_format",
-      "community": 1,
-      "community_name": "OrderTable.jsx",
+      "id": "backend_src_clients_shopee_client",
+      "label": "backend_src_clients_shopee_client",
+      "_origin": "semantic",
+      "community": 6,
+      "community_name": "server.js",
       "external": true,
       "file_type": "concept",
-      "norm_label": "frontend_src_utils_format",
+      "norm_label": "backend_src_clients_shopee_client",
       "source_file": "",
       "type": "external"
     },
     {
-      "id": "frontend_src_utils_format_formatvarianttext",
-      "label": "frontend_src_utils_format_formatvarianttext",
+      "id": "ref_lucide_react",
+      "label": "ref_lucide_react",
       "community": 1,
       "community_name": "OrderTable.jsx",
       "external": true,
       "file_type": "concept",
-      "norm_label": "frontend_src_utils_format_formatvarianttext",
+      "norm_label": "ref_lucide_react",
       "source_file": "",
       "type": "external"
     },
     {
-      "id": "frontend_src_utils_format_getdisplayimage",
-      "label": "frontend_src_utils_format_getdisplayimage",
-      "community": 1,
-      "community_name": "OrderTable.jsx",
+      "id": "ref_fs",
+      "label": "ref_fs",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
       "external": true,
       "file_type": "concept",
-      "norm_label": "frontend_src_utils_format_getdisplayimage",
+      "norm_label": "ref_fs",
       "source_file": "",
       "type": "external"
     },
     {
-      "id": "frontend_src_utils_format_normalizetime",
-      "label": "frontend_src_utils_format_normalizetime",
-      "community": 1,
-      "community_name": "OrderTable.jsx",
+      "id": "ref_path",
+      "label": "ref_path",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
       "external": true,
       "file_type": "concept",
-      "norm_label": "frontend_src_utils_format_normalizetime",
+      "norm_label": "ref_path",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_url",
+      "label": "ref_url",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_url",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "backend_src_app",
+      "label": "backend_src_app",
+      "community": 6,
+      "community_name": "server.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "backend_src_app",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "backend_src_clients_shopee_client_startshopeetokenautorefresh",
+      "label": "backend_src_clients_shopee_client_startshopeetokenautorefresh",
+      "community": 6,
+      "community_name": "server.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "backend_src_clients_shopee_client_startshopeetokenautorefresh",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "backend_src_services_bcaqris_service",
+      "label": "backend_src_services_bcaqris_service",
+      "community": 6,
+      "community_name": "server.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "backend_src_services_bcaqris_service",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "backend_src_services_bcaqris_service_startqrisautorefresh",
+      "label": "backend_src_services_bcaqris_service_startqrisautorefresh",
+      "community": 6,
+      "community_name": "server.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "backend_src_services_bcaqris_service_startqrisautorefresh",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_dotenv",
+      "label": "ref_dotenv",
+      "community": 6,
+      "community_name": "server.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_dotenv",
       "source_file": "",
       "type": "external"
     }
   ],
   "links": [
+    {
+      "source": "backend_src_services_customerhistory_service_buildcustomerstatus",
+      "target": "backend_src_services_customerhistory_service_findbuyeritems",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_buildcustomerstatus",
+      "target": "backend_src_services_customerhistory_service_getreturnreasonlabel",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L127",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_buildcustomerstatus",
+      "target": "backend_src_services_customerhistory_service_getbuyerkeys",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_findbuyeritems",
+      "target": "backend_src_services_customerhistory_service_getbuyerkeys",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L362",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_groupbybuyer",
+      "target": "backend_src_services_customerhistory_service_getbuyerkeys",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L350",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_isenabled",
+      "target": "backend_src_services_customerhistory_service_gethistorydays",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L396",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_loadhistoryfile",
+      "target": "backend_src_services_customerhistory_service_gethistoryfilepath",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L250",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_refreshcustomerhistory",
+      "target": "backend_src_services_customerhistory_service_gethistorydays",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_refreshcustomerhistory",
+      "target": "backend_src_services_customerhistory_service_syncorderindex",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_refreshcustomerhistory",
+      "target": "backend_src_services_customerhistory_service_syncreturns",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_refreshcustomerhistory",
+      "target": "backend_src_services_customerhistory_service_savehistoryfile",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_refreshifdue",
+      "target": "backend_src_services_customerhistory_service_getrefreshms",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L139",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_refreshifdue",
+      "target": "backend_src_services_customerhistory_service_refreshcustomerhistory",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L143",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_rememberorders",
+      "target": "backend_src_services_customerhistory_service_isenabled",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_rememberorders",
+      "target": "backend_src_services_customerhistory_service_setorderentry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_savehistoryfile",
+      "target": "backend_src_services_customerhistory_service_gethistoryfilepath",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L280",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_startcustomerhistoryautorefresh",
+      "target": "backend_src_services_customerhistory_service_isenabled",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_startcustomerhistoryautorefresh",
+      "target": "backend_src_services_customerhistory_service_loadhistoryfile",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_startcustomerhistoryautorefresh",
+      "target": "backend_src_services_customerhistory_service_refreshifdue",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncorderindex",
+      "target": "backend_src_utils_range_util_buildtimeranges",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncorderindex",
+      "target": "backend_src_services_customerhistory_service_callshopee",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncorderindex",
+      "target": "backend_src_utils_range_util_chunkarray",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncorderindex",
+      "target": "backend_src_services_customerhistory_service_setorderentry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L214",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncreturns",
+      "target": "backend_src_utils_range_util_buildtimeranges",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L232",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncreturns",
+      "target": "backend_src_services_customerhistory_service_callshopee",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L234",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_withcustomerstatus",
+      "target": "backend_src_services_customerhistory_service_groupbybuyer",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_withcustomerstatus",
+      "target": "backend_src_services_customerhistory_service_buildcustomerstatus",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L92",
+      "weight": 1.0
+    },
     {
       "source": "backend_src_services_shopeeorder_service_getdashboardsummary",
       "target": "backend_src_services_shopeeorder_service_getpendingordersfordisplay",
@@ -567,7 +1450,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -579,7 +1462,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -591,7 +1474,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L94",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -603,7 +1486,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L52",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -615,7 +1498,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L272",
+      "source_location": "L273",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_shopeeorder_service_getpendingordersfordisplay",
+      "target": "backend_src_services_customerhistory_service_rememberorders",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/shopeeOrder.service.js",
+      "source_location": "L278",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_shopeeorder_service_getpendingordersfordisplay",
+      "target": "backend_src_services_customerhistory_service_withcustomerstatus",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/shopeeOrder.service.js",
+      "source_location": "L306",
       "weight": 1.0
     },
     {
@@ -627,31 +1534,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L227",
+      "source_location": "L228",
       "weight": 1.0
     },
     {
       "source": "backend_src_services_shopeeorder_service_getshopeeorderswithdetails",
-      "target": "backend_src_services_shopeeorder_service_buildtimeranges",
+      "target": "backend_src_utils_range_util_buildtimeranges",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L149",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
       "source": "backend_src_services_shopeeorder_service_getshopeeorderswithdetails",
-      "target": "backend_src_services_shopeeorder_service_chunkarray",
+      "target": "backend_src_utils_range_util_chunkarray",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L196",
+      "source_location": "L197",
       "weight": 1.0
     },
     {
@@ -663,7 +1570,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L206",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
@@ -675,7 +1582,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L338",
+      "source_location": "L342",
       "weight": 1.0
     },
     {
@@ -687,7 +1594,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L340",
+      "source_location": "L344",
       "weight": 1.0
     },
     {
@@ -699,7 +1606,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L347",
+      "source_location": "L352",
       "weight": 1.0
     },
     {
@@ -711,7 +1618,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L352",
+      "source_location": "L357",
       "weight": 1.0
     },
     {
@@ -723,7 +1630,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L359",
+      "source_location": "L364",
       "weight": 1.0
     },
     {
@@ -735,7 +1642,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L368",
+      "source_location": "L373",
       "weight": 1.0
     },
     {
@@ -747,7 +1654,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L369",
+      "source_location": "L374",
       "weight": 1.0
     },
     {
@@ -759,7 +1666,163 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L99",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_customerstatusbadge_customerstatusbadge",
+      "target": "frontend_src_utils_format_formattimeago",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_customerstatusbadge_customerstatusbadge",
+      "target": "frontend_src_utils_format_formatshortdate",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_ordertable_orderrow",
+      "target": "frontend_src_utils_format_normalizetime",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "frontend/src/components/OrderTable.jsx",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_ordertable_orderrow",
+      "target": "frontend_src_utils_format_getdisplayimage",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "frontend/src/components/OrderTable.jsx",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_ordertable_orderrow",
+      "target": "frontend_src_utils_format_formatvarianttext",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "frontend/src/components/OrderTable.jsx",
+      "source_location": "L80",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_server",
+      "target": "backend_src_clients_shopee_client_startshopeetokenautorefresh",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/server.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_server",
+      "target": "backend_src_services_bcaqris_service_startqrisautorefresh",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/server.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_server",
+      "target": "backend_src_services_customerhistory_service_startcustomerhistoryautorefresh",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/server.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_clients_shopee_client_shopeeget",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_constants_order_constant_customer_status",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_utils_range_util_buildtimeranges",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_utils_range_util_chunkarray",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_utils_shopeetokenstore_getshopeetokens",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -883,6 +1946,78 @@
       "weight": 1.0
     },
     {
+      "source": "backend_src_services_shopeeorder_service",
+      "target": "backend_src_utils_range_util_buildtimeranges",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/shopeeOrder.service.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_shopeeorder_service",
+      "target": "backend_src_utils_range_util_chunkarray",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/shopeeOrder.service.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_shopeeorder_service",
+      "target": "backend_src_services_customerhistory_service_rememberorders",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/shopeeOrder.service.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_shopeeorder_service",
+      "target": "backend_src_services_customerhistory_service_withcustomerstatus",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/shopeeOrder.service.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_customerstatusbadge",
+      "target": "frontend_src_utils_format_formatshortdate",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_customerstatusbadge",
+      "target": "frontend_src_utils_format_formattimeago",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "frontend_src_components_ordertable",
       "target": "frontend_src_components_ordericons_moneyicon",
       "relation": "imports",
@@ -920,6 +2055,18 @@
     },
     {
       "source": "frontend_src_components_ordertable",
+      "target": "frontend_src_components_customerstatusbadge_customerstatusbadge",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/components/OrderTable.jsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_ordertable",
       "target": "frontend_src_utils_format_formatvarianttext",
       "relation": "imports",
       "_origin": "ast",
@@ -927,7 +2074,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/OrderTable.jsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -939,7 +2086,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/OrderTable.jsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -951,7 +2098,151 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "frontend/src/components/OrderTable.jsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_server",
+      "target": "ref_dotenv",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/server.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_server",
+      "target": "backend_src_app",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/server.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_server",
+      "target": "backend_src_clients_shopee_client",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/server.js",
       "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_server",
+      "target": "backend_src_services_bcaqris_service",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/server.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_server",
+      "target": "backend_src_services_customerhistory_service",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/server.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "ref_url",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_clients_shopee_client",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_constants_order_constant",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_utils_range_util",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_utils_shopeetokenstore",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -1003,6 +2294,54 @@
       "weight": 1.0
     },
     {
+      "source": "backend_src_services_shopeeorder_service",
+      "target": "backend_src_utils_range_util",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/shopeeOrder.service.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_shopeeorder_service",
+      "target": "backend_src_services_customerhistory_service",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "backend/src/services/shopeeOrder.service.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_customerstatusbadge",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_customerstatusbadge",
+      "target": "frontend_src_utils_format",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "frontend_src_components_ordertable",
       "target": "frontend_src_components_ordericons",
       "relation": "imports_from",
@@ -1016,7 +2355,7 @@
     },
     {
       "source": "frontend_src_components_ordertable",
-      "target": "frontend_src_components_productimage",
+      "target": "frontend_src_components_customerstatusbadge",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1028,7 +2367,7 @@
     },
     {
       "source": "frontend_src_components_ordertable",
-      "target": "frontend_src_components_statusbadge",
+      "target": "frontend_src_components_productimage",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1040,7 +2379,7 @@
     },
     {
       "source": "frontend_src_components_ordertable",
-      "target": "frontend_src_utils_format",
+      "target": "frontend_src_components_statusbadge",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1051,6 +2390,359 @@
       "weight": 1.0
     },
     {
+      "source": "frontend_src_components_ordertable",
+      "target": "frontend_src_utils_format",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/components/OrderTable.jsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_constants_order_constant",
+      "target": "backend_src_constants_order_constant_shipping_type",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/constants/order.constant.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_constants_order_constant",
+      "target": "backend_src_constants_order_constant_customer_status",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/constants/order.constant.js",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_constants_order_constant",
+      "target": "backend_src_constants_order_constant_pending_statuses",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/constants/order.constant.js",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_constants_order_constant",
+      "target": "backend_src_constants_order_constant_order_status",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/constants/order.constant.js",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_refreshifdue",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_data_dir",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_refreshcustomerhistory",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_ignored_order_statuses",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_ignored_return_statuses",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_syncorderindex",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_return_reason_labels",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_syncreturns",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L231",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_loadhistoryfile",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L249",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_savehistoryfile",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L279",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_gethistoryfilepath",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L296",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_normalizereturn",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L305",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_setorderentry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L321",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_getbuyerkeys",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L333",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_groupbybuyer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L346",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_findbuyeritems",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L359",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_getreturnreasonlabel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L369",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_callshopee",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L378",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_orderindex",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_returnindex",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_gethistorydays",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L390",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_isenabled",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L395",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_getrefreshms",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L399",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_startcustomerhistoryautorefresh",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_rememberorders",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_withcustomerstatus",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_buildcustomerstatus",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
       "source": "backend_src_services_shopeeorder_service",
       "target": "backend_src_services_shopeeorder_service_getdashboardsummary",
       "relation": "contains",
@@ -1058,7 +2750,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -1069,7 +2761,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L109",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
@@ -1080,7 +2772,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L132",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -1091,7 +2783,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L226",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -1102,7 +2794,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L260",
+      "source_location": "L261",
       "weight": 1.0
     },
     {
@@ -1113,7 +2805,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L306",
+      "source_location": "L309",
       "weight": 1.0
     },
     {
@@ -1124,7 +2816,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L328",
+      "source_location": "L331",
       "weight": 1.0
     },
     {
@@ -1135,7 +2827,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L375",
+      "source_location": "L380",
       "weight": 1.0
     },
     {
@@ -1146,7 +2838,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L383",
+      "source_location": "L388",
       "weight": 1.0
     },
     {
@@ -1157,7 +2849,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L394",
+      "source_location": "L399",
       "weight": 1.0
     },
     {
@@ -1168,7 +2860,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L404",
+      "source_location": "L409",
       "weight": 1.0
     },
     {
@@ -1179,7 +2871,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L427",
+      "source_location": "L433",
       "weight": 1.0
     },
     {
@@ -1190,7 +2882,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L443",
+      "source_location": "L449",
       "weight": 1.0
     },
     {
@@ -1201,7 +2893,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L453",
+      "source_location": "L459",
       "weight": 1.0
     },
     {
@@ -1212,29 +2904,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L46",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_shopeeorder_service",
-      "target": "backend_src_services_shopeeorder_service_chunkarray",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L465",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_shopeeorder_service",
-      "target": "backend_src_services_shopeeorder_service_buildtimeranges",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L475",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -1245,7 +2915,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L494",
+      "source_location": "L471",
       "weight": 1.0
     },
     {
@@ -1256,7 +2926,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L66",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -1267,7 +2937,40 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L97",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_utils_range_util",
+      "target": "backend_src_utils_range_util_chunkarray",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/utils/range.util.js",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_utils_range_util",
+      "target": "backend_src_utils_range_util_buildtimeranges",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/utils/range.util.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_customerstatusbadge",
+      "target": "frontend_src_components_customerstatusbadge_customerstatusbadge",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -1311,7 +3014,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/OrderTable.jsx",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -1322,7 +3025,119 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/OrderTable.jsx",
-      "source_location": "L6",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_utils_format",
+      "target": "frontend_src_utils_format_formatindonesiandate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_utils_format",
+      "target": "frontend_src_utils_format_normalizetime",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_utils_format",
+      "target": "frontend_src_utils_format_formatvarianttext",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_utils_format",
+      "target": "frontend_src_utils_format_getdisplayimage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_utils_format",
+      "target": "frontend_src_utils_format_formattimeago",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_utils_format",
+      "target": "frontend_src_utils_format_formatshortdate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_utils_format",
+      "target": "frontend_src_utils_format_formatrupiah",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_utils_format",
+      "target": "frontend_src_utils_format_getstatuslabel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/utils/format.js",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_loadhistoryfile",
+      "target": "backend_src_services_customerhistory_service_setorderentry",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L257",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncreturns",
+      "target": "backend_src_services_customerhistory_service_normalizereturn",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -1334,7 +3149,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -1346,7 +3161,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L228",
+      "source_location": "L229",
       "weight": 1.0
     },
     {
@@ -1358,10 +3173,10 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "backend/src/services/shopeeOrder.service.js",
-      "source_location": "L221",
+      "source_location": "L222",
       "weight": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d56f248663081fd6ad4963b0e58bafa5a1832ecb"
+  "built_at_commit": "ecc1781d4d6e9e7e4d80758efa1fe3f7d01dfcaa"
 }
