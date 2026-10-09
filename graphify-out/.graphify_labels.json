@@ -6,9 +6,9 @@
   "4": "getPendingOrdersForDisplay",
   "5": "customerHistory.service.js",
   "6": "server.js",
-  "7": "syncOrderIndex",
+  "7": "syncOrders",
   "8": "buildCustomerStatus",
-  "9": "refreshCustomerHistory",
+  "9": "tick",
   "10": "order.constant.js",
   "11": "rememberOrders"
 }

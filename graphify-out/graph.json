@@ -16,6 +16,18 @@
       "source_location": "L110"
     },
     {
+      "id": "frontend_src_components_customerstatusbadge_badge",
+      "label": "Badge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "file_type": "code",
+      "norm_label": "badge()",
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L58"
+    },
+    {
       "id": "frontend_src_components_customerstatusbadge_customerstatusbadge",
       "label": "CustomerStatusBadge()",
       "_callable": true,
@@ -25,7 +37,7 @@
       "file_type": "code",
       "norm_label": "customerstatusbadge()",
       "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
-      "source_location": "L5"
+      "source_location": "L4"
     },
     {
       "id": "frontend_src_components_ordericons_moneyicon",
@@ -193,7 +205,7 @@
       "file_type": "code",
       "norm_label": "gethistoryfilepath()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L296"
+      "source_location": "L328"
     },
     {
       "id": "backend_src_services_customerhistory_service_loadhistoryfile",
@@ -205,7 +217,7 @@
       "file_type": "code",
       "norm_label": "loadhistoryfile()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L249"
+      "source_location": "L273"
     },
     {
       "id": "backend_src_services_customerhistory_service_rememberorders",
@@ -217,7 +229,7 @@
       "file_type": "code",
       "norm_label": "rememberorders()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L63"
+      "source_location": "L70"
     },
     {
       "id": "backend_src_services_customerhistory_service_savehistoryfile",
@@ -229,7 +241,7 @@
       "file_type": "code",
       "norm_label": "savehistoryfile()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L279"
+      "source_location": "L305"
     },
     {
       "id": "backend_src_services_customerhistory_service_setorderentry",
@@ -241,7 +253,7 @@
       "file_type": "code",
       "norm_label": "setorderentry()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L321"
+      "source_location": "L353"
     },
     {
       "id": "backend_src_services_shopeeorder_service_buildrecipientaddress",
@@ -453,11 +465,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "syncOrderIndex",
+      "community_name": "syncOrders",
       "file_type": "code",
       "norm_label": "callshopee()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L378"
+      "source_location": "L410"
     },
     {
       "id": "backend_src_services_customerhistory_service_normalizereturn",
@@ -465,23 +477,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "syncOrderIndex",
+      "community_name": "syncOrders",
       "file_type": "code",
       "norm_label": "normalizereturn()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L305"
+      "source_location": "L337"
     },
     {
-      "id": "backend_src_services_customerhistory_service_syncorderindex",
-      "label": "syncOrderIndex()",
+      "id": "backend_src_services_customerhistory_service_syncorders",
+      "label": "syncOrders()",
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "syncOrderIndex",
+      "community_name": "syncOrders",
       "file_type": "code",
-      "norm_label": "syncorderindex()",
+      "norm_label": "syncorders()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L180"
+      "source_location": "L205"
     },
     {
       "id": "backend_src_services_customerhistory_service_syncreturns",
@@ -489,11 +501,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "syncOrderIndex",
+      "community_name": "syncOrders",
       "file_type": "code",
       "norm_label": "syncreturns()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L231"
+      "source_location": "L255"
     },
     {
       "id": "backend_src_utils_range_util_buildtimeranges",
@@ -501,7 +513,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "syncOrderIndex",
+      "community_name": "syncOrders",
       "file_type": "code",
       "norm_label": "buildtimeranges()",
       "source_file": "backend/src/utils/range.util.js",
@@ -513,7 +525,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 7,
-      "community_name": "syncOrderIndex",
+      "community_name": "syncOrders",
       "file_type": "code",
       "norm_label": "chunkarray()",
       "source_file": "backend/src/utils/range.util.js",
@@ -529,7 +541,7 @@
       "file_type": "code",
       "norm_label": "buildcustomerstatus()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L96"
+      "source_location": "L103"
     },
     {
       "id": "backend_src_services_customerhistory_service_findbuyeritems",
@@ -541,7 +553,7 @@
       "file_type": "code",
       "norm_label": "findbuyeritems()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L359"
+      "source_location": "L391"
     },
     {
       "id": "backend_src_services_customerhistory_service_getbuyerkeys",
@@ -553,7 +565,7 @@
       "file_type": "code",
       "norm_label": "getbuyerkeys()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L333"
+      "source_location": "L365"
     },
     {
       "id": "backend_src_services_customerhistory_service_getreturnreasonlabel",
@@ -565,7 +577,7 @@
       "file_type": "code",
       "norm_label": "getreturnreasonlabel()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L369"
+      "source_location": "L401"
     },
     {
       "id": "backend_src_services_customerhistory_service_groupbybuyer",
@@ -577,7 +589,7 @@
       "file_type": "code",
       "norm_label": "groupbybuyer()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L346"
+      "source_location": "L378"
     },
     {
       "id": "backend_src_services_customerhistory_service_withcustomerstatus",
@@ -589,7 +601,19 @@
       "file_type": "code",
       "norm_label": "withcustomerstatus()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L78"
+      "source_location": "L85"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_backfillnextchunk",
+      "label": "backfillNextChunk()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "tick",
+      "file_type": "code",
+      "norm_label": "backfillnextchunk()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L185"
     },
     {
       "id": "backend_src_services_customerhistory_service_gethistorydays",
@@ -597,11 +621,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "refreshCustomerHistory",
+      "community_name": "tick",
       "file_type": "code",
       "norm_label": "gethistorydays()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L390"
+      "source_location": "L422"
     },
     {
       "id": "backend_src_services_customerhistory_service_getrefreshms",
@@ -609,11 +633,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "refreshCustomerHistory",
+      "community_name": "tick",
       "file_type": "code",
       "norm_label": "getrefreshms()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L399"
+      "source_location": "L435"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_gettargetsince",
+      "label": "getTargetSince()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "tick",
+      "file_type": "code",
+      "norm_label": "gettargetsince()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L427"
     },
     {
       "id": "backend_src_services_customerhistory_service_isenabled",
@@ -621,35 +657,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "refreshCustomerHistory",
+      "community_name": "tick",
       "file_type": "code",
       "norm_label": "isenabled()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L395"
-    },
-    {
-      "id": "backend_src_services_customerhistory_service_refreshcustomerhistory",
-      "label": "refreshCustomerHistory()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "refreshCustomerHistory",
-      "file_type": "code",
-      "norm_label": "refreshcustomerhistory()",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L148"
-    },
-    {
-      "id": "backend_src_services_customerhistory_service_refreshifdue",
-      "label": "refreshIfDue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "refreshCustomerHistory",
-      "file_type": "code",
-      "norm_label": "refreshifdue()",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L135"
+      "source_location": "L431"
     },
     {
       "id": "backend_src_services_customerhistory_service_startcustomerhistoryautorefresh",
@@ -657,11 +669,47 @@
       "_callable": true,
       "_origin": "ast",
       "community": 9,
-      "community_name": "refreshCustomerHistory",
+      "community_name": "tick",
       "file_type": "code",
       "norm_label": "startcustomerhistoryautorefresh()",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L51"
+      "source_location": "L58"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_syncrange",
+      "label": "syncRange()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "tick",
+      "file_type": "code",
+      "norm_label": "syncrange()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L200"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_syncrecent",
+      "label": "syncRecent()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "tick",
+      "file_type": "code",
+      "norm_label": "syncrecent()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L168"
+    },
+    {
+      "id": "backend_src_services_customerhistory_service_tick",
+      "label": "tick()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "tick",
+      "file_type": "code",
+      "norm_label": "tick()",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L143"
     },
     {
       "id": "backend_src_services_shopeeorder_service",
@@ -793,7 +841,7 @@
       "file_type": "code",
       "norm_label": "data_dir",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L14"
+      "source_location": "L21"
     },
     {
       "id": "backend_src_services_customerhistory_service_ignored_order_statuses",
@@ -804,7 +852,7 @@
       "file_type": "code",
       "norm_label": "ignored_order_statuses",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L17"
+      "source_location": "L24"
     },
     {
       "id": "backend_src_services_customerhistory_service_ignored_return_statuses",
@@ -815,7 +863,7 @@
       "file_type": "code",
       "norm_label": "ignored_return_statuses",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L18"
+      "source_location": "L25"
     },
     {
       "id": "backend_src_services_customerhistory_service_orderindex",
@@ -826,7 +874,7 @@
       "file_type": "code",
       "norm_label": "orderindex",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L38"
+      "source_location": "L45"
     },
     {
       "id": "backend_src_services_customerhistory_service_return_reason_labels",
@@ -837,7 +885,7 @@
       "file_type": "code",
       "norm_label": "return_reason_labels",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L20"
+      "source_location": "L27"
     },
     {
       "id": "backend_src_services_customerhistory_service_returnindex",
@@ -848,7 +896,7 @@
       "file_type": "code",
       "norm_label": "returnindex",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L39"
+      "source_location": "L46"
     },
     {
       "id": "backend_src_server",
@@ -866,7 +914,7 @@
       "label": "range.util.js",
       "_origin": "ast",
       "community": 7,
-      "community_name": "syncOrderIndex",
+      "community_name": "syncOrders",
       "file_type": "code",
       "norm_label": "range.util.js",
       "source_file": "backend/src/utils/range.util.js",
@@ -1005,6 +1053,66 @@
       "type": "external"
     },
     {
+      "id": "ref_lucide_react",
+      "label": "ref_lucide_react",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "OrderTable.jsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_lucide_react",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_fs",
+      "label": "ref_fs",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_fs",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_path",
+      "label": "ref_path",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_path",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "ref_url",
+      "label": "ref_url",
+      "_origin": "semantic",
+      "community": 5,
+      "community_name": "customerHistory.service.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "ref_url",
+      "source_file": "",
+      "type": "external"
+    },
+    {
+      "id": "backend_src_app",
+      "label": "backend_src_app",
+      "_origin": "semantic",
+      "community": 6,
+      "community_name": "server.js",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "backend_src_app",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "backend_src_clients_shopee_client",
       "label": "backend_src_clients_shopee_client",
       "_origin": "semantic",
@@ -1017,63 +1125,9 @@
       "type": "external"
     },
     {
-      "id": "ref_lucide_react",
-      "label": "ref_lucide_react",
-      "community": 1,
-      "community_name": "OrderTable.jsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_lucide_react",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_fs",
-      "label": "ref_fs",
-      "community": 5,
-      "community_name": "customerHistory.service.js",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_fs",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_path",
-      "label": "ref_path",
-      "community": 5,
-      "community_name": "customerHistory.service.js",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_path",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_url",
-      "label": "ref_url",
-      "community": 5,
-      "community_name": "customerHistory.service.js",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_url",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "backend_src_app",
-      "label": "backend_src_app",
-      "community": 6,
-      "community_name": "server.js",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "backend_src_app",
-      "source_file": "",
-      "type": "external"
-    },
-    {
       "id": "backend_src_clients_shopee_client_startshopeetokenautorefresh",
       "label": "backend_src_clients_shopee_client_startshopeetokenautorefresh",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "server.js",
       "external": true,
@@ -1085,6 +1139,7 @@
     {
       "id": "backend_src_services_bcaqris_service",
       "label": "backend_src_services_bcaqris_service",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "server.js",
       "external": true,
@@ -1096,6 +1151,7 @@
     {
       "id": "backend_src_services_bcaqris_service_startqrisautorefresh",
       "label": "backend_src_services_bcaqris_service_startqrisautorefresh",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "server.js",
       "external": true,
@@ -1107,6 +1163,7 @@
     {
       "id": "ref_dotenv",
       "label": "ref_dotenv",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "server.js",
       "external": true,
@@ -1118,6 +1175,54 @@
   ],
   "links": [
     {
+      "source": "backend_src_services_customerhistory_service_backfillnextchunk",
+      "target": "backend_src_services_customerhistory_service_gettargetsince",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_backfillnextchunk",
+      "target": "backend_src_services_customerhistory_service_syncrange",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L189",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_backfillnextchunk",
+      "target": "backend_src_services_customerhistory_service_savehistoryfile",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L197",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_buildcustomerstatus",
+      "target": "backend_src_services_customerhistory_service_getbuyerkeys",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
       "source": "backend_src_services_customerhistory_service_buildcustomerstatus",
       "target": "backend_src_services_customerhistory_service_findbuyeritems",
       "relation": "calls",
@@ -1126,7 +1231,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L101",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -1138,19 +1243,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L127",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service_buildcustomerstatus",
-      "target": "backend_src_services_customerhistory_service_getbuyerkeys",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L99",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -1162,7 +1255,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L362",
+      "source_location": "L394",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_gettargetsince",
+      "target": "backend_src_services_customerhistory_service_gethistorydays",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L428",
       "weight": 1.0
     },
     {
@@ -1174,7 +1279,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L350",
+      "source_location": "L382",
       "weight": 1.0
     },
     {
@@ -1186,7 +1291,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L396",
+      "source_location": "L432",
       "weight": 1.0
     },
     {
@@ -1198,79 +1303,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L250",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service_refreshcustomerhistory",
-      "target": "backend_src_services_customerhistory_service_gethistorydays",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L156",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service_refreshcustomerhistory",
-      "target": "backend_src_services_customerhistory_service_syncorderindex",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L158",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service_refreshcustomerhistory",
-      "target": "backend_src_services_customerhistory_service_syncreturns",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L159",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service_refreshcustomerhistory",
-      "target": "backend_src_services_customerhistory_service_savehistoryfile",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L166",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service_refreshifdue",
-      "target": "backend_src_services_customerhistory_service_getrefreshms",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L139",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service_refreshifdue",
-      "target": "backend_src_services_customerhistory_service_refreshcustomerhistory",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L143",
+      "source_location": "L274",
       "weight": 1.0
     },
     {
@@ -1282,7 +1315,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L64",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -1294,7 +1327,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L67",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -1306,7 +1339,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L280",
+      "source_location": "L306",
       "weight": 1.0
     },
     {
@@ -1318,7 +1351,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L52",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -1330,23 +1363,23 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L57",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
       "source": "backend_src_services_customerhistory_service_startcustomerhistoryautorefresh",
-      "target": "backend_src_services_customerhistory_service_refreshifdue",
+      "target": "backend_src_services_customerhistory_service_tick",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L58",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
-      "source": "backend_src_services_customerhistory_service_syncorderindex",
+      "source": "backend_src_services_customerhistory_service_syncorders",
       "target": "backend_src_utils_range_util_buildtimeranges",
       "relation": "calls",
       "_origin": "ast",
@@ -1354,11 +1387,11 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L183",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
-      "source": "backend_src_services_customerhistory_service_syncorderindex",
+      "source": "backend_src_services_customerhistory_service_syncorders",
       "target": "backend_src_services_customerhistory_service_callshopee",
       "relation": "calls",
       "_origin": "ast",
@@ -1366,36 +1399,12 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L187",
+      "source_location": "L212",
       "weight": 1.0
     },
     {
-      "source": "backend_src_services_customerhistory_service_syncorderindex",
+      "source": "backend_src_services_customerhistory_service_syncorders",
       "target": "backend_src_utils_range_util_chunkarray",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L207",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service_syncorderindex",
-      "target": "backend_src_services_customerhistory_service_setorderentry",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L214",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service_syncreturns",
-      "target": "backend_src_utils_range_util_buildtimeranges",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1406,6 +1415,90 @@
       "weight": 1.0
     },
     {
+      "source": "backend_src_services_customerhistory_service_syncorders",
+      "target": "backend_src_services_customerhistory_service_setorderentry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L239",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncrange",
+      "target": "backend_src_services_customerhistory_service_syncorders",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L201",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncrange",
+      "target": "backend_src_services_customerhistory_service_syncreturns",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L202",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncrecent",
+      "target": "backend_src_services_customerhistory_service_gethistorydays",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L171",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncrecent",
+      "target": "backend_src_services_customerhistory_service_syncrange",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L175",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncrecent",
+      "target": "backend_src_services_customerhistory_service_savehistoryfile",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L182",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_syncreturns",
+      "target": "backend_src_utils_range_util_buildtimeranges",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L256",
+      "weight": 1.0
+    },
+    {
       "source": "backend_src_services_customerhistory_service_syncreturns",
       "target": "backend_src_services_customerhistory_service_callshopee",
       "relation": "calls",
@@ -1414,7 +1507,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L234",
+      "source_location": "L258",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_tick",
+      "target": "backend_src_services_customerhistory_service_getrefreshms",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_tick",
+      "target": "backend_src_services_customerhistory_service_gettargetsince",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -1426,7 +1543,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L84",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -1438,7 +1555,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L92",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -1678,7 +1795,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
-      "source_location": "L14",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -1690,7 +1807,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
-      "source_location": "L9",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -2447,13 +2564,68 @@
     },
     {
       "source": "backend_src_services_customerhistory_service",
-      "target": "backend_src_services_customerhistory_service_refreshifdue",
+      "target": "backend_src_services_customerhistory_service_buildcustomerstatus",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L135",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_tick",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L143",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_syncrecent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_backfillnextchunk",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L185",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_syncrange",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L200",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_syncorders",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -2464,18 +2636,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L14",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service",
-      "target": "backend_src_services_customerhistory_service_refreshcustomerhistory",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L148",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -2486,7 +2647,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L17",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -2497,29 +2658,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L18",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service",
-      "target": "backend_src_services_customerhistory_service_syncorderindex",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L180",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service",
-      "target": "backend_src_services_customerhistory_service_return_reason_labels",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L20",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -2530,7 +2669,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L231",
+      "source_location": "L255",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_return_reason_labels",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -2541,7 +2691,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L249",
+      "source_location": "L273",
       "weight": 1.0
     },
     {
@@ -2552,7 +2702,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L279",
+      "source_location": "L305",
       "weight": 1.0
     },
     {
@@ -2563,7 +2713,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L296",
+      "source_location": "L328",
       "weight": 1.0
     },
     {
@@ -2574,7 +2724,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L305",
+      "source_location": "L337",
       "weight": 1.0
     },
     {
@@ -2585,7 +2735,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L321",
+      "source_location": "L353",
       "weight": 1.0
     },
     {
@@ -2596,7 +2746,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L333",
+      "source_location": "L365",
       "weight": 1.0
     },
     {
@@ -2607,7 +2757,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L346",
+      "source_location": "L378",
       "weight": 1.0
     },
     {
@@ -2618,7 +2768,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L359",
+      "source_location": "L391",
       "weight": 1.0
     },
     {
@@ -2629,7 +2779,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L369",
+      "source_location": "L401",
       "weight": 1.0
     },
     {
@@ -2640,29 +2790,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L378",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service",
-      "target": "backend_src_services_customerhistory_service_orderindex",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L38",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service",
-      "target": "backend_src_services_customerhistory_service_returnindex",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L39",
+      "source_location": "L410",
       "weight": 1.0
     },
     {
@@ -2673,7 +2801,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L390",
+      "source_location": "L422",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_gettargetsince",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L427",
       "weight": 1.0
     },
     {
@@ -2684,7 +2823,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L395",
+      "source_location": "L431",
       "weight": 1.0
     },
     {
@@ -2695,7 +2834,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L399",
+      "source_location": "L435",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_orderindex",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service",
+      "target": "backend_src_services_customerhistory_service_returnindex",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -2706,7 +2867,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L51",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -2717,7 +2878,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L63",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -2728,18 +2889,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L78",
-      "weight": 1.0
-    },
-    {
-      "source": "backend_src_services_customerhistory_service",
-      "target": "backend_src_services_customerhistory_service_buildcustomerstatus",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L96",
+      "source_location": "L85",
       "weight": 1.0
     },
     {
@@ -2970,7 +3120,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
-      "source_location": "L5",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_src_components_customerstatusbadge",
+      "target": "frontend_src_components_customerstatusbadge_badge",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "frontend/src/components/CustomerStatusBadge.jsx",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -3125,7 +3286,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L257",
+      "source_location": "L281",
       "weight": 1.0
     },
     {
@@ -3137,7 +3298,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "backend/src/services/customerHistory.service.js",
-      "source_location": "L242",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -3175,8 +3336,32 @@
       "source_file": "backend/src/services/shopeeOrder.service.js",
       "source_location": "L222",
       "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_tick",
+      "target": "backend_src_services_customerhistory_service_syncrecent",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "collection",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_src_services_customerhistory_service_tick",
+      "target": "backend_src_services_customerhistory_service_backfillnextchunk",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "collection",
+      "source_file": "backend/src/services/customerHistory.service.js",
+      "source_location": "L152",
+      "weight": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "ecc1781d4d6e9e7e4d80758efa1fe3f7d01dfcaa"
+  "built_at_commit": "a72d2bbb288cfe2fdb4f9362a8004373da69d026"
 }
