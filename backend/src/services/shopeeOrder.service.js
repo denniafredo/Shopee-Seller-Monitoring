@@ -2,10 +2,11 @@ import { shopeeGet, getShopeeCredential, refreshAccessToken } from '../clients/s
 import { ORDER_STATUS, PENDING_STATUSES, SHIPPING_TYPE } from '../constants/order.constant.js';
 import { formatTimeWIB, getTodayUnixRangeWIB } from '../utils/date.util.js';
 import { getShopeeTokens, persistShopeeTokens } from '../utils/shopeeTokenStore.js';
+import { buildTimeRanges, chunkArray } from '../utils/range.util.js';
+import { rememberOrders, withCustomerStatus } from './customerHistory.service.js';
 
 const DEFAULT_ORDER_LOOKBACK_DAYS = 5;
 const DEFAULT_PENDING_LOOKBACK_DAYS = 5;
-const MAX_ORDER_LIST_RANGE_DAYS = 15;
 
 export async function getDashboardSummary(params = {}) {
   const pendingOrders = await getPendingOrdersForDisplay(params);
@@ -274,6 +275,8 @@ async function getPendingOrdersForDisplay(params = {}) {
     lookbackDays: pendingLookbackDays
   });
 
+  rememberOrders(orders);
+
   orders = orders.filter((order) =>
     PENDING_STATUSES.includes(order.status) &&
     order.paymentStatus === 'PAID' &&
@@ -300,7 +303,7 @@ async function getPendingOrdersForDisplay(params = {}) {
     return aTime - bTime;
   });
 
-  return orders;
+  return withCustomerStatus(orders);
 }
 
 function getOptionalFields() {
@@ -334,12 +337,14 @@ function normalizeShopeeOrder(order) {
 
   return {
     orderNo: order.order_sn,
+    buyerUserId: order.buyer_user_id || null,
     buyerName: order.buyer_username || null,
     buyerNote: normalizeNote(order.message_to_seller),
     sellerNote: normalizeNote(order.note),
     shippingType: mapShippingType(order.shipping_carrier),
     courierName: order.shipping_carrier || null,
     orderTime: orderDate.toISOString(),
+    orderTimestamp: order.create_time || null,
     orderTimeText: formatTimeWIB(orderDate),
     payTime: payDate ? payDate.toISOString() : null,
     payTimeText: payDate ? formatTimeWIB(payDate) : null,
@@ -415,6 +420,7 @@ function formatOrderForTable(order) {
     shippingDeadlineText: order.shippingDeadlineText,
     buyerNote: order.buyerNote,
     sellerNote: order.sellerNote,
+    customer: order.customer || null,
     items: order.items.map((item) => ({
       productName: item.productName,
       variantName: item.variantName,
@@ -460,35 +466,6 @@ function buildRecipientAddress(recipient) {
   ]
     .filter(Boolean)
     .join(', ');
-}
-
-function chunkArray(array, size) {
-  const chunks = [];
-
-  for (let i = 0; i < array.length; i += size) {
-    chunks.push(array.slice(i, i + size));
-  }
-
-  return chunks;
-}
-
-function buildTimeRanges({ timeFrom, timeTo }) {
-  const maxRangeSeconds = MAX_ORDER_LIST_RANGE_DAYS * 24 * 60 * 60;
-  const ranges = [];
-  let rangeTo = timeTo;
-
-  while (rangeTo >= timeFrom) {
-    const rangeFrom = Math.max(timeFrom, rangeTo - maxRangeSeconds + 1);
-
-    ranges.push({
-      timeFrom: rangeFrom,
-      timeTo: rangeTo
-    });
-
-    rangeTo = rangeFrom - 1;
-  }
-
-  return ranges;
 }
 
 function getShippingDeadlineText(shipByTimestamp) {

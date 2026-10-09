@@ -6,3 +6,6 @@ npm-debug.log*
 # BCA QRIS puppeteer session + debug artifacts
 .qris-session/
 .qris-debug/
+
+# Riwayat pelanggan (berisi username pembeli)
+data/

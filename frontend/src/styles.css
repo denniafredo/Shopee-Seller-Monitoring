@@ -385,6 +385,52 @@ body {
   color: #4d7c4f;
 }
 
+/* Riwayat pelanggan: pernah retur / tidak pernah retur / pelanggan baru */
+.customer-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 8px 0 0;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.customer-status svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.customer-status--warning {
+  border-color: #f5c542;
+  background: #fff3c4;
+  color: #7a4a00;
+  font-weight: 700;
+}
+
+.customer-status--danger {
+  border-color: #f4a3b0;
+  background: #fff0f2;
+  color: #b4162c;
+  font-weight: 700;
+}
+
+.customer-status--clean {
+  border-color: #86d9a6;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.customer-status--new {
+  background: #eef1f5;
+  color: #4b5563;
+}
+
 .order-cell--items {
   grid-column: 2 / 4;
   display: flex;
@@ -738,6 +784,21 @@ body {
   .order-cell--number .order-time svg {
     width: 17px;
     height: 17px;
+  }
+
+  .customer-status {
+    gap: 3px;
+    margin-top: 4px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 10px;
+    line-height: 1.25;
+  }
+
+  .customer-status svg {
+    width: 11px;
+    height: 11px;
+    margin-top: 1px;
   }
 
   .order-cell--items {

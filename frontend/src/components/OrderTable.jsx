@@ -1,4 +1,5 @@
 import { OrderIcon, MoneyIcon, NoteIcon } from './OrderIcons'
+import CustomerStatusBadge from './CustomerStatusBadge'
 import ProductImage from './ProductImage'
 import StatusBadge from './StatusBadge'
 import { formatVariantText, getDisplayImage, normalizeTime } from '../utils/format'
@@ -55,6 +56,7 @@ function OrderRow({ order, tone, isNew = false }) {
             {normalizeTime(order.payTime)}
           </span>
         )}
+        <CustomerStatusBadge customer={order.customer} />
       </div>
 
       <div className="order-cell order-cell--items">
