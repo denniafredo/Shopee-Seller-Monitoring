@@ -1,7 +1,6 @@
-import { CircleAlert, CircleCheck, TriangleAlert, UserRoundPlus } from 'lucide-react'
+import { CircleAlert, TriangleAlert, UserRoundCheck, UserRoundPlus } from 'lucide-react'
 import { formatShortDate, formatTimeAgo } from '../utils/format'
 
-// Badges are <p> on purpose: `.order-cell--number span` styles would otherwise recolor them.
 export default function CustomerStatusBadge({ customer }) {
   if (!customer) return null
 
@@ -10,14 +9,12 @@ export default function CustomerStatusBadge({ customer }) {
 
   if (status === 'PERNAH_RETUR') {
     const isRepeat = returnCount > 1
-    const Icon = isRepeat ? CircleAlert : TriangleAlert
     const timeAgo = formatTimeAgo(lastReturn?.createdAt)
-    const reason = lastReturn?.reasonLabel ? ` (${lastReturn.reasonLabel})` : ''
-    const label = isRepeat
-      ? `Retur ${returnCount}x${timeAgo ? `, terakhir ${timeAgo}` : ''}${reason}`
-      : `Retur${timeAgo ? `: ${timeAgo}` : ''}${reason}`
+    const detail = [isRepeat && timeAgo ? `terakhir ${timeAgo}` : timeAgo, lastReturn?.reasonLabel]
+      .filter(Boolean)
+      .join(' · ')
     const title = [
-      `Pernah retur ${returnCount}x${since}`,
+      `Pernah retur ${returnCount}x${previousOrderCount ? ` dari ${previousOrderCount}x order sebelumnya` : ''}${since}`,
       lastReturn?.reasonText && `Alasan pembeli: "${lastReturn.reasonText}"`,
       lastReturn?.orderSn && `Order retur terakhir: ${lastReturn.orderSn}`
     ]
@@ -25,29 +22,47 @@ export default function CustomerStatusBadge({ customer }) {
       .join('\n')
 
     return (
-      <p className={`customer-status customer-status--${isRepeat ? 'danger' : 'warning'}`} title={title}>
-        <Icon size={14} strokeWidth={2.4} />
-        {label}
-      </p>
-    )
-  }
-
-  if (status === 'TIDAK_PERNAH_RETUR') {
-    return (
-      <p
-        className="customer-status customer-status--clean"
-        title={`Sudah ${previousOrderCount}x belanja, tidak pernah retur${since}`}
+      <Badge
+        tone={isRepeat ? 'danger' : 'warning'}
+        icon={isRepeat ? CircleAlert : TriangleAlert}
+        title={title}
+        detail={detail}
       >
-        <CircleCheck size={14} />
-        Tidak Pernah Retur
-      </p>
+        Pernah Retur ({returnCount}x)
+      </Badge>
     )
   }
 
+  if (status === 'PELANGGAN_LAMA') {
+    const orderCount = previousOrderCount + 1 // including this order
+
+    return (
+      <Badge tone="clean" icon={UserRoundCheck} title={`Order ke-${orderCount} dari pembeli ini, belum pernah retur${since}`}>
+        Pelanggan Lama ({orderCount}x order)
+      </Badge>
+    )
+  }
+
+  if (status === 'PELANGGAN_BARU') {
+    return (
+      <Badge tone="new" icon={UserRoundPlus} title={`Belum pernah order sebelumnya${since}`}>
+        Pelanggan Baru
+      </Badge>
+    )
+  }
+
+  return null
+}
+
+// Built from <div>s on purpose: `.order-cell--number span/strong` styles would otherwise restyle them.
+function Badge({ tone, icon: Icon, title, detail, children }) {
   return (
-    <p className="customer-status customer-status--new" title={`Belum ada pesanan lain${since}`}>
-      <UserRoundPlus size={14} />
-      Pelanggan Baru
-    </p>
+    <div className={`customer-status customer-status--${tone}`} title={title}>
+      <Icon size={14} />
+      <div>
+        <div>{children}</div>
+        {detail && <div className="customer-status__detail">{detail}</div>}
+      </div>
+    </div>
   )
 }

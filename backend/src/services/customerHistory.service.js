@@ -6,10 +6,17 @@ import { CUSTOMER_STATUS } from '../constants/order.constant.js';
 import { buildTimeRanges, chunkArray } from '../utils/range.util.js';
 import { getShopeeTokens } from '../utils/shopeeTokenStore.js';
 
-const DEFAULT_HISTORY_DAYS = 90;
+const DAY_SECONDS = 24 * 60 * 60;
+const DEFAULT_HISTORY_DAYS = 365;
 const DEFAULT_REFRESH_MS = 15 * 60 * 1000;
+// Each refresh re-reads only this window: new orders/returns and the status changes that
+// matter (cancelled orders, withdrawn return requests) happen within it. Older history is read once.
+const RECENT_SYNC_DAYS = 30;
+// Older history is backfilled one Shopee-sized range per tick, so the load stays flat.
+const BACKFILL_CHUNK_DAYS = 15;
+const SYNC_OVERLAP_SECONDS = 60 * 60;
 const RETRY_AFTER_ERROR_MS = 5 * 60 * 1000;
-const CHECK_INTERVAL_MS = 60 * 1000;
+const TICK_MS = 60 * 1000;
 const MAX_RETURN_PAGES_PER_RANGE = 50;
 const DATA_DIR = fileURLToPath(new URL('../../data/', import.meta.url));
 
@@ -34,19 +41,19 @@ const RETURN_REASON_LABELS = {
 };
 
 // Persisted to the history file, so a buyer keeps their history after it falls
-// out of the window the API is re-read for (SHOPEE_CUSTOMER_HISTORY_DAYS).
+// out of the window the API is read for (SHOPEE_CUSTOMER_HISTORY_DAYS).
 const orderIndex = new Map(); // orderSn -> { orderSn, buyerUserId, buyerUsername, createTime, status }
 const returnIndex = new Map(); // returnSn -> return request; every status, since a request can be cancelled later
-let historySince = null; // unix seconds; how far back the history has been read
-let loaded = false; // true once there is history to answer from (file or a full refresh)
-let lastAttemptAt = 0;
-let lastRefreshAt = 0;
+let historySince = null; // unix seconds; history is complete from here up to syncedUntil
+let syncedUntil = null; // unix seconds; end of the last successful recent sync
+let loaded = false; // true once there is history to answer from (file or a sync)
+let retryAt = 0; // ms; after a failed job, no new job starts before this
 let inFlight = null;
 
 /**
- * Keep every order and return seen so far, re-reading the last N days from the
- * API in the background, so each pending order can be tagged with its buyer's
- * history without extra API calls on the dashboard request itself.
+ * Keep every order and return seen so far, refreshed from the API in the
+ * background, so each pending order can be tagged with its buyer's history
+ * without extra API calls on the dashboard request itself.
  */
 export function startCustomerHistoryAutoRefresh() {
   if (!isEnabled()) {
@@ -55,8 +62,8 @@ export function startCustomerHistoryAutoRefresh() {
   }
 
   loadHistoryFile();
-  refreshIfDue();
-  setInterval(refreshIfDue, CHECK_INTERVAL_MS);
+  tick();
+  setInterval(tick, TICK_MS);
 }
 
 /** Feed orders the dashboard already fetched, so a buyer's order from minutes ago counts. */
@@ -111,7 +118,7 @@ function buildCustomerStatus(order, ordersByBuyer, returnsByBuyer) {
 
   let status = CUSTOMER_STATUS.PELANGGAN_BARU;
   if (lastReturn) status = CUSTOMER_STATUS.PERNAH_RETUR;
-  else if (previousOrderCount > 0) status = CUSTOMER_STATUS.TIDAK_PERNAH_RETUR;
+  else if (previousOrderCount > 0) status = CUSTOMER_STATUS.PELANGGAN_LAMA;
 
   return {
     status,
@@ -132,52 +139,70 @@ function buildCustomerStatus(order, ordersByBuyer, returnsByBuyer) {
   };
 }
 
-function refreshIfDue() {
-  if (inFlight) return;
+// At most one job per tick: the recent sync when it's due, otherwise one backfill chunk.
+function tick() {
+  if (inFlight || Date.now() < retryAt) return;
 
-  const failedLastTime = lastAttemptAt > lastRefreshAt;
-  const waitMs = failedLastTime ? RETRY_AFTER_ERROR_MS : getRefreshMs();
+  const nowSeconds = Math.floor(Date.now() / 1000);
+  let job = null;
 
-  if (Date.now() - Math.max(lastAttemptAt, lastRefreshAt) < waitMs) return;
+  if (!syncedUntil || nowSeconds - syncedUntil >= getRefreshMs() / 1000) {
+    job = { label: 'refresh', run: syncRecent };
+  } else if (historySince > getTargetSince(nowSeconds)) {
+    job = { label: 'backfill', run: backfillNextChunk };
+  }
 
-  refreshCustomerHistory().catch(() => {
-    // already logged; retried after RETRY_AFTER_ERROR_MS
-  });
-}
+  if (!job) return;
 
-function refreshCustomerHistory() {
-  if (inFlight) return inFlight;
-
-  lastAttemptAt = Date.now();
-
-  inFlight = (async () => {
-    try {
-      const timeTo = Math.floor(Date.now() / 1000);
-      const timeFrom = timeTo - getHistoryDays() * 24 * 60 * 60;
-
-      await syncOrderIndex({ timeFrom, timeTo });
-      await syncReturns({ timeFrom, timeTo });
-      historySince = Math.min(historySince || timeFrom, timeFrom);
-      loaded = true;
-      lastRefreshAt = Date.now();
-
-      console.log(`Customer history refreshed: ${orderIndex.size} orders, ${returnIndex.size} returns`);
-
-      await saveHistoryFile().catch((error) =>
-        console.error('Customer history save failed:', error?.message || error)
-      );
-    } catch (error) {
-      console.error('Customer history refresh failed:', error?.message || error);
-      throw error;
-    } finally {
+  inFlight = job
+    .run()
+    .catch((error) => {
+      retryAt = Date.now() + RETRY_AFTER_ERROR_MS;
+      console.error(`Customer history ${job.label} failed:`, error?.message || error);
+    })
+    .finally(() => {
       inFlight = null;
-    }
-  })();
-
-  return inFlight;
+    });
 }
 
-async function syncOrderIndex({ timeFrom, timeTo }) {
+async function syncRecent() {
+  const timeTo = Math.floor(Date.now() / 1000);
+  // +1 keeps the window at exactly two 15-day Shopee ranges instead of spilling into a third.
+  const recentFrom = timeTo - Math.min(RECENT_SYNC_DAYS, getHistoryDays()) * DAY_SECONDS + 1;
+  // After a long downtime, reach back to where the last sync ended so no orders fall in a gap.
+  const timeFrom = syncedUntil ? Math.min(recentFrom, syncedUntil - SYNC_OVERLAP_SECONDS) : recentFrom;
+
+  await syncRange({ timeFrom, timeTo });
+
+  historySince = Math.min(historySince || timeFrom, timeFrom);
+  syncedUntil = timeTo;
+  loaded = true;
+
+  console.log(`Customer history refreshed: ${orderIndex.size} orders, ${returnIndex.size} returns`);
+  await saveHistoryFile();
+}
+
+async function backfillNextChunk() {
+  const timeTo = historySince - 1;
+  const timeFrom = Math.max(getTargetSince(), historySince - BACKFILL_CHUNK_DAYS * DAY_SECONDS);
+
+  await syncRange({ timeFrom, timeTo });
+
+  historySince = timeFrom;
+
+  console.log(
+    `Customer history backfilled to ${new Date(timeFrom * 1000).toISOString().slice(0, 10)}: ` +
+      `${orderIndex.size} orders, ${returnIndex.size} returns`
+  );
+  await saveHistoryFile();
+}
+
+async function syncRange({ timeFrom, timeTo }) {
+  await syncOrders({ timeFrom, timeTo });
+  await syncReturns({ timeFrom, timeTo });
+}
+
+async function syncOrders({ timeFrom, timeTo }) {
   const statuses = new Map(); // orderSn -> order_status
 
   for (const range of buildTimeRanges({ timeFrom, timeTo })) {
@@ -221,7 +246,6 @@ async function syncOrderIndex({ timeFrom, timeTo }) {
     );
   }
 
-  // Orders older than the window are kept as they are; their status is final by then.
   statuses.forEach((status, orderSn) => {
     const entry = orderIndex.get(orderSn);
     if (entry && status) entry.status = status;
@@ -259,6 +283,8 @@ function loadHistoryFile() {
       if (item?.returnSn) returnIndex.set(item.returnSn, item);
     });
     historySince = data.historySince || null;
+    // Files saved before syncedUntil existed were written right after a full refresh.
+    syncedUntil = data.syncedUntil || (data.updatedAt ? Math.floor(Date.parse(data.updatedAt) / 1000) : null);
     loaded = Boolean(historySince);
 
     console.log(`Customer history loaded from ${filePath}: ${orderIndex.size} orders, ${returnIndex.size} returns`);
@@ -283,14 +309,20 @@ async function saveHistoryFile() {
   const data = {
     updatedAt: new Date().toISOString(),
     historySince,
+    syncedUntil,
     orders: [...orderIndex.values()].sort(newestFirst),
     returns: [...returnIndex.values()].sort(newestFirst)
   };
 
-  await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
-  // Write-then-rename, so a crash mid-write never leaves a half-written history file.
-  await fs.promises.writeFile(tmpPath, JSON.stringify(data, null, 2));
-  await fs.promises.rename(tmpPath, filePath);
+  try {
+    await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
+    // Write-then-rename, so a crash mid-write never leaves a half-written history file.
+    await fs.promises.writeFile(tmpPath, JSON.stringify(data, null, 2));
+    await fs.promises.rename(tmpPath, filePath);
+  } catch (error) {
+    // The history in memory is still valid; the next successful save catches up.
+    console.error('Customer history save failed:', error?.message || error);
+  }
 }
 
 function getHistoryFilePath() {
@@ -390,6 +422,10 @@ async function callShopee(apiPath, params) {
 function getHistoryDays() {
   const raw = process.env.SHOPEE_CUSTOMER_HISTORY_DAYS;
   return raw === undefined || raw === '' ? DEFAULT_HISTORY_DAYS : Number(raw);
+}
+
+function getTargetSince(nowSeconds = Math.floor(Date.now() / 1000)) {
+  return nowSeconds - getHistoryDays() * DAY_SECONDS;
 }
 
 function isEnabled() {
