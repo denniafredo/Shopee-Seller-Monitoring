@@ -1,17 +1,17 @@
-# Graph Report - Shopee Monitoring  (2026-10-09)
+# Graph Report - Shopee Monitoring  (2026-10-11)
 
 ## Corpus Check
-- 33 files · ~11,588 words
+- 33 files · ~11,619 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 8 file(s) not represented in the graph (top: (none) 4, .example 2, .zip 1)
 
 ## Summary
-- 99 nodes · 188 edges · 12 communities
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.85)
+- 131 nodes · 252 edges · 13 communities
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a72d2bbb`
+- Built from commit: `107eaae5`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -28,35 +28,36 @@
 - tick
 - order.constant.js
 - rememberOrders
+- bcaQris.client.js
 
 ## God Nodes (most connected - your core abstractions)
-1. `normalizeShopeeOrder()` - 10 edges
-2. `getShopeeOrdersWithDetails()` - 7 edges
-3. `getPendingOrdersForDisplay()` - 7 edges
-4. `tick()` - 6 edges
-5. `syncOrders()` - 6 edges
-6. `buildTimeRanges()` - 6 edges
-7. `startCustomerHistoryAutoRefresh()` - 5 edges
-8. `rememberOrders()` - 5 edges
-9. `withCustomerStatus()` - 5 edges
-10. `buildCustomerStatus()` - 5 edges
+1. `ensureLoggedIn()` - 10 edges
+2. `normalizeShopeeOrder()` - 10 edges
+3. `fetchQrisSettlement()` - 7 edges
+4. `getShopeeOrdersWithDetails()` - 7 edges
+5. `getPendingOrdersForDisplay()` - 7 edges
+6. `syncOrders()` - 6 edges
+7. `buildTimeRanges()` - 6 edges
+8. `tick()` - 6 edges
+9. `scrapeHomePage()` - 5 edges
+10. `parseSettlementText()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `getPendingOrdersForDisplay()` --calls--> `rememberOrders()`  [EXTRACTED]
-  backend/src/services/shopeeOrder.service.js → backend/src/services/customerHistory.service.js
-- `getPendingOrdersForDisplay()` --calls--> `withCustomerStatus()`  [EXTRACTED]
   backend/src/services/shopeeOrder.service.js → backend/src/services/customerHistory.service.js
 - `getShopeeOrdersWithDetails()` --calls--> `buildTimeRanges()`  [EXTRACTED]
   backend/src/services/shopeeOrder.service.js → backend/src/utils/range.util.js
 - `getShopeeOrdersWithDetails()` --calls--> `chunkArray()`  [EXTRACTED]
   backend/src/services/shopeeOrder.service.js → backend/src/utils/range.util.js
-- `syncOrders()` --calls--> `buildTimeRanges()`  [EXTRACTED]
-  backend/src/services/customerHistory.service.js → backend/src/utils/range.util.js
+- `getPendingOrdersForDisplay()` --calls--> `withCustomerStatus()`  [EXTRACTED]
+  backend/src/services/shopeeOrder.service.js → backend/src/services/customerHistory.service.js
+- `CustomerStatusBadge()` --calls--> `formatShortDate()`  [EXTRACTED]
+  frontend/src/components/CustomerStatusBadge.jsx → frontend/src/utils/format.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (12 total, 0 thin omitted)
+## Communities (13 total, 0 thin omitted)
 
 ### Community 0 - "shopeeOrder.service.js"
 Cohesion: 0.18
@@ -106,20 +107,24 @@ Nodes (4): CUSTOMER_STATUS, ORDER_STATUS, PENDING_STATUSES, SHIPPING_TYPE
 Cohesion: 0.40
 Nodes (5): getHistoryFilePath(), loadHistoryFile(), rememberOrders(), saveHistoryFile(), setOrderEntry()
 
+### Community 12 - "bcaQris.client.js"
+Cohesion: 0.12
+Nodes (31): amountAnchored(), assertDiskSpace(), buildFromRrn(), CHROME_CANDIDATES, clearSession(), clickLoginButton(), closeBrowser(), DEBUG_DIR (+23 more)
+
 ## Knowledge Gaps
-- **6 isolated node(s):** `DATA_DIR`, `IGNORED_ORDER_STATUSES`, `IGNORED_RETURN_STATUSES`, `RETURN_REASON_LABELS`, `orderIndex` (+1 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 29 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **11 isolated node(s):** `MID`, `MIN_FREE_DISK_MB`, `SESSION_DIR`, `DEBUG_DIR`, `CHROME_CANDIDATES` (+6 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 35 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `rememberOrders()` connect `rememberOrders` to `shopeeOrder.service.js`, `tick`, `getPendingOrdersForDisplay`, `customerHistory.service.js`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **Why does `withCustomerStatus()` connect `buildCustomerStatus` to `shopeeOrder.service.js`, `getPendingOrdersForDisplay`, `customerHistory.service.js`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **Why does `buildTimeRanges()` connect `syncOrders` to `shopeeOrder.service.js`, `getShopeeOrdersWithDetails`, `customerHistory.service.js`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Are the 2 inferred relationships involving `tick()` (e.g. with `backfillNextChunk()` and `syncRecent()`) actually correct?**
-  _`tick()` has 2 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `DATA_DIR`, `IGNORED_ORDER_STATUSES`, `IGNORED_RETURN_STATUSES` to the rest of the system?**
-  _6 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **What connects `MID`, `MIN_FREE_DISK_MB`, `SESSION_DIR` to the rest of the system?**
+  _11 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `bcaQris.client.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

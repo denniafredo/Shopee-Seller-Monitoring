@@ -10,5 +10,6 @@
   "8": "buildCustomerStatus",
   "9": "tick",
   "10": "order.constant.js",
-  "11": "rememberOrders"
+  "11": "rememberOrders",
+  "12": "bcaQris.client.js"
 }
