@@ -439,7 +439,10 @@ async function loadAllTransactions(page) {
 export function parseNominal(raw) {
   if (!raw) return 0;
   // "Rp 182.000" / "+ Rp 41.000" -> 182000. Indonesian format: dot = thousands.
-  const digits = String(raw).replace(/[^0-9]/g, '');
+  // BCA sometimes appends decimals ("Rp 41.000,00"); a trailing separator with
+  // 1-2 digits is the fraction, not thousands — drop it, or ",00" becomes x100.
+  const intPart = String(raw).trim().replace(/[.,]\d{1,2}$/, '');
+  const digits = intPart.replace(/[^0-9]/g, '');
   return digits ? parseInt(digits, 10) : 0;
 }
 
